@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch"
   },
   "dependencies": {
     "express": "^4.16.4",
