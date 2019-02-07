@@ -5,14 +5,14 @@ class App extends React.Component {
     super(props);
     this.state ={
 
-    }
+    };
   }
   render() {
     return (
       <div>
         Hello
       </div>
-    )
+    );
   }
 }
 
