@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistImage from './ArtistImage.jsx';
+import ArtistImage from './ArtistImage';
 
 class App extends React.Component {
   constructor(props) {
