@@ -45,7 +45,7 @@ const Song = sequelize.define('songplayer', {
     allowNull: false,
   },
   decibel: {
-    type: Sequelize.INTEGER(11),
+    type: Sequelize.INTEGER(3),
     allowNull: false,
   },
   comment: {
@@ -74,3 +74,7 @@ Song.sync({ force: true }).then(() => {
   return Promise.all(songs);
 })
   .catch(err => console.log(err));
+
+module.exports = {
+  Song, sequelize,
+};

@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
+// const Seed = require('../seed.js');
 const { username, password } = require('../config.js');
+
 
 const sequelize = new Sequelize('player', username, password, {
   host: 'localhost',
@@ -55,6 +57,12 @@ const getAllSongs = () => {
   return Song.findAll();
 };
 
+const getSongImg = () => {
+  return Song.findAll({
+    attributes: ['imgurl'],
+  });
+};
+
 module.exports = {
-  getAllSongs,
+  getAllSongs, getSongImg,
 };

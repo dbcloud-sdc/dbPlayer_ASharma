@@ -17,6 +17,16 @@ app.get('/api/song_id', (req, res) => {
     });
 });
 
+app.get('/api/song_img', (req, res) => {
+  db.getSongImg()
+    .then((img) => {
+      res.status(200).send(img);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
 app.listen(PORT, () => {
   console.log(`NOW LISTENING ON PORT ${PORT}`);
 });
