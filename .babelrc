@@ -3,5 +3,10 @@
     "@babel/preset-env",
     "@babel/preset-react",
     ["airbnb"],
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+}
 }
