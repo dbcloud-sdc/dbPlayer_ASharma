@@ -2,15 +2,15 @@ import React from 'react';
 
 const SongInfo = (props) => {
   return (
-    <span className="Info-Container">
-      <div className="Artist-Name">
+    <div className="Info-Container">
+      <span className="Artist-Name">
       hello
-      </div>
-      <div className="Song-Name">
+      </span>
+      <span className="Song-Name">
       this is the name of the song and this is a test to make sure my text wraps
-      </div>
-    </span>
-  )
-}
+      </span>
+    </div>
+  );
+};
 
-export default SongInfo
+export default SongInfo;
