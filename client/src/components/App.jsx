@@ -22,7 +22,6 @@ class App extends React.Component {
 
   getImage() {
     ajax.getAllImages((err, data) => {
-      console.log('get Image data', data);
       if (err) {
         console.log('getImage failed', err);
       } else {
