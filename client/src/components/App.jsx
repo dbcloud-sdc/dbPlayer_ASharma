@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faToggleOff, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
 import ArtistImage from './ArtistImage';
 import PlayButton from './PlayButton';
+import SongInfo from './SongInfo';
 import ajax from '../../lib/ajax';
 
 library.add(faPlayCircle);
@@ -38,6 +39,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <ArtistImage img={this.state.image} />
+        <SongInfo />
         <PlayButton />
       </div>
     );
