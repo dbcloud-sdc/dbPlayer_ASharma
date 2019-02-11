@@ -1,8 +1,7 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlayCircle, faToggleOff } from '@fortawesome/free-solid-svg-icons';
-import { faPauseCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlayCircle, faToggleOff, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
 import ArtistImage from './ArtistImage';
 import PlayButton from './PlayButton';
 
