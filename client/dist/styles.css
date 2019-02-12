@@ -57,9 +57,9 @@ body {
   display: table-column;
   margin-top: 28px;
   margin-left: 10px;
-  width: 580px;
+  width: 578px;
   height: 400px;
-  margin-right: 200px;
+  margin-right: 20px;
 }
 
 /* .Info-Container {
@@ -96,4 +96,45 @@ body {
   max-width: 574px;
   max-height: 39px;
   padding: 2.5px 7px;
+}
+
+
+/* Time and HashTag */
+
+.Time-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 200px;
+}
+
+.Elapsed-time {
+  color: white;
+  margin-right: 33px;
+  text-align: right;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 33px;
+  margin-bottom: 16px;
+}
+
+.hashtag {
+  background: #999;
+  border: 1px solid #999;
+  border-radius: 20px;
+  color: white;
+  width: fit-content;
+  max-width: 120px;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 7px;
+  line-height: 20px;
+  white-space: wrap;
+  outline: none;
+  margin-right: 33px;
+}
+
+.hashtag:hover {
+  cursor: pointer;
+  background: #667;
 }
