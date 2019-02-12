@@ -4,10 +4,10 @@ const SongInfo = (props) => {
   return (
     <div className="Info-Container">
       <div className="Artist-Name">
-      hello
+        {props.song.artistname}
       </div>
       <span className="Song-Name">
-      this is the name of the song and this is a test to make sure my text wraps
+        {props.song.songname}
       </span>
     </div>
   );

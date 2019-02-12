@@ -14,11 +14,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       image: [],
+      songs: [],
     };
   }
 
   componentDidMount() {
     this.getImage();
+    this.getSongs();
   }
 
   getImage() {
@@ -34,12 +36,24 @@ class App extends React.Component {
     });
   }
 
+  getSongs() {
+    ajax.getAllSongs((err, data) => {
+      if (err) {
+        console.log('getSongs Failed', err);
+      } else {
+        const randomIndex = Math.floor(Math.random() * 100);
+        this.setState({
+          songs: data[randomIndex],
+        });
+      }
+    });
+  }
 
   render() {
     return (
       <div className="container">
         <ArtistImage img={this.state.image} />
-        <SongInfo />
+        <SongInfo song={this.state.songs} />
         <PlayButton />
       </div>
     );

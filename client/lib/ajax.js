@@ -8,8 +8,14 @@ const getAllImages = (callback) => {
   });
 };
 
-export default {
-  getAllImages,
+const getAllSongs = (callback) => {
+  $.get({
+    url: 'http://localhost:2222/api/song_id',
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
 };
 
-// "https://s3-us-west-1.amazonaws.com/songimages/photos/
+export default {
+  getAllImages, getAllSongs,
+};
