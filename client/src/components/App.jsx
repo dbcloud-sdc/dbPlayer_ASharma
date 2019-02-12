@@ -5,6 +5,7 @@ import { faPlayCircle, faToggleOff, faPauseCircle } from '@fortawesome/free-soli
 import ArtistImage from './ArtistImage';
 import PlayButton from './PlayButton';
 import SongInfo from './SongInfo';
+import ElapsedTime from './ElapsedTime';
 import ajax from '../../lib/ajax';
 
 library.add(faPlayCircle);
@@ -53,6 +54,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <ArtistImage img={this.state.image} />
+        <ElapsedTime />
         <SongInfo song={this.state.songs} />
         <PlayButton />
       </div>
