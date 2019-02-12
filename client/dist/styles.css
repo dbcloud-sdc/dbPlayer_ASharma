@@ -141,7 +141,7 @@ body {
 
 /* Sound Bar */
 
-.sound-container {
+.sound-container-top {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -149,8 +149,20 @@ body {
   height: 80px;
   position: absolute;
   transform: rotate(180deg);
-  float: left;
   margin-top: 240px;
   margin-left: 31px;
+  margin-right: 31px;
+  margin-bottom: 2px;
+}
+
+.sound-container-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 820px;
+  height: 30px;
+  position: absolute;
+  margin-top: 322px;
+  margin-left: 33px;
   margin-right: 31px;
 }
