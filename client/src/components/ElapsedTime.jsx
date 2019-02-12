@@ -5,7 +5,7 @@ const ElapsedTime = props => (
     <div className="Elapsed-time">
         2 Years Ago
     </div>
-    <button className="hashtag" type="submit">#COWIE</button>
+    <button className="hashtag" type="submit"># COWIE</button>
   </div>
 );
 

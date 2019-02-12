@@ -57,9 +57,9 @@ body {
   display: table-column;
   margin-top: 28px;
   margin-left: 10px;
-  width: 580px;
+  width: 578px;
   height: 400px;
-  margin-right: 200px;
+  margin-right: 20px;
 }
 
 /* .Info-Container {
@@ -104,13 +104,32 @@ body {
 .Time-Container {
   display: flex;
   flex-direction: column;
-
+  align-items: flex-end;
+  width: 200px;
 }
 
 .Elapsed-time {
-  
+  margin-right: 33px;
 }
 
 .hashtag {
-  background: #999
+  background: #999;
+  border: 1px solid #999;
+  border-radius: 20px;
+  color: white;
+  width: fit-content;
+  max-width: 120px;
+  font-size: 14px;
+  text-align: right;
+  height: 20px;
+  padding: 0 7px;
+  line-height: 20px;
+  white-space: nowrap;
+  outline: none;
+  margin-right: 33px;
+}
+
+.hashtag:hover {
+  cursor: pointer;
+  background: #667;
 }
