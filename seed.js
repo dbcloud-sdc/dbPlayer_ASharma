@@ -59,7 +59,7 @@ Song.sync({ force: true }).then(() => {
   const songs = [];
   for (let i = 1; i <= 100; i += 1) {
     const songMaker = Song.build({
-      songname: faker.random.words(),
+      songname: faker.lorem.sentence(),
       artistname: faker.name.findName(),
       imgurl: `https://s3-us-west-1.amazonaws.com/songimages/photos/simg${i}.jpg`,
       hashtag: faker.random.words(),

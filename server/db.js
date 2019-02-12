@@ -16,7 +16,7 @@ const Song = sequelize.define('songplayer', {
     primaryKey: true,
   },
   songname: {
-    type: Sequelize.STRING(100),
+    type: Sequelize.STRING(200),
     allowNull: false,
   },
   artistname: {
