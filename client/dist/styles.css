@@ -58,7 +58,7 @@ body {
   margin-top: 28px;
   margin-left: 10px;
   width: 578px;
-  height: 400px;
+  height: 200px;
   margin-right: 20px;
 }
 
@@ -79,7 +79,7 @@ body {
   width: fit-content;
   max-width: 200px;
   max-height: 25px;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   padding: 2px 7px 3px;
 }
 
@@ -137,4 +137,89 @@ body {
 .hashtag:hover {
   cursor: pointer;
   background: #667;
+}
+
+/* Sound Bar */
+
+.sound-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 820px;
+  height: 80px;
+  position: absolute;
+  transform: rotate(180deg);
+  float: left;
+  margin-top: 260px;
+  margin-left: 31px;
+}
+
+.Bar1 {
+  width: 4px;
+  height: 8px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar2 {
+  width: 4px;
+  height: 22px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar3 {
+  width: 4px;
+  height: 34px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar4 {
+  width: 4px;
+  height: 44px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar5 {
+  width: 4px;
+  height: 52px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar6 {
+  width: 4px;
+  height: 56px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar7 {
+  width: 4px;
+  height: 62px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar8 {
+  width: 4px;
+  height: 68px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar9 {
+  width: 4px;
+  height: 74px;
+  background: white;
+  margin-right: 1px;
+}
+
+.Bar10 {
+  width: 4px;
+  height: 80px;
+  background: white;
+  margin-right: 1px;
 }
