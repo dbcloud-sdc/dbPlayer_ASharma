@@ -62,7 +62,7 @@ Song.sync({ force: true }).then(() => {
       songname: faker.lorem.sentence(),
       artistname: faker.name.findName(),
       imgurl: `https://s3-us-west-1.amazonaws.com/songimages/photos/simg${i}.jpg`,
-      hashtag: faker.random.words(),
+      hashtag: faker.random.word(),
       timeelapsed: faker.date.past(),
       starttime: 0,
       songlength: faker.random.number(),

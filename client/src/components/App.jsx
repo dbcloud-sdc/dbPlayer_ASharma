@@ -54,7 +54,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <ArtistImage img={this.state.image} />
-        <ElapsedTime />
+        <ElapsedTime info={this.state.songs} />
         <SongInfo song={this.state.songs} />
         <PlayButton />
       </div>

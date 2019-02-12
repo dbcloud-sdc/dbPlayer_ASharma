@@ -126,11 +126,10 @@ body {
   width: fit-content;
   max-width: 120px;
   font-size: 14px;
-  text-align: right;
-  height: 20px;
+  text-align: center;
   padding: 0 7px;
   line-height: 20px;
-  white-space: nowrap;
+  white-space: wrap;
   outline: none;
   margin-right: 33px;
 }
