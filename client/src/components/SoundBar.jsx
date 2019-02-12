@@ -32,7 +32,7 @@ import styled from 'styled-components';
 const SoundBar = (props) => {
   const Bars = () => {
     const barArray = [];
-    for (let i = 1; i < 200; i++) {
+    for (let i = 1; i < 274; i++) {
       const randomNum = Math.floor(Math.random() * props.sound.decibel);
       barArray.push(<BarStyleSpan style={{ height: randomNum }} key={i} />);
     }
@@ -49,7 +49,7 @@ const SoundBar = (props) => {
 // className={`Bar${randomNum}`}
 
 const BarStyleSpan = styled.span`
-  width: 4px;
+  width: 2.5px;
   background: white;
   margin-right: 1px;
 `;

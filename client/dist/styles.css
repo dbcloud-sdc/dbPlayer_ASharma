@@ -150,76 +150,7 @@ body {
   position: absolute;
   transform: rotate(180deg);
   float: left;
-  margin-top: 260px;
+  margin-top: 240px;
   margin-left: 31px;
-}
-
-.Bar1 {
-  width: 4px;
-  height: 8px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar2 {
-  width: 4px;
-  height: 22px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar3 {
-  width: 4px;
-  height: 34px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar4 {
-  width: 4px;
-  height: 44px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar5 {
-  width: 4px;
-  height: 52px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar6 {
-  width: 4px;
-  height: 56px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar7 {
-  width: 4px;
-  height: 62px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar8 {
-  width: 4px;
-  height: 68px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar9 {
-  width: 4px;
-  height: 74px;
-  background: white;
-  margin-right: 1px;
-}
-
-.Bar10 {
-  width: 4px;
-  height: 80px;
-  background: white;
-  margin-right: 1px;
+  margin-right: 31px;
 }
