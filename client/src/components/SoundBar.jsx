@@ -61,6 +61,9 @@ const BarStyleSpan = styled.span`
   width: 2.5px;
   background: white;
   margin-right: 1px;
+  &:hover {
+    background: #f50;
+  }
 `;
 
 export default SoundBar;

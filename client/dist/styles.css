@@ -173,9 +173,10 @@ body {
   height: 16px;
   position: absolute;
   color: #f50;
+  right: 0;
+  top: 0;
   font: 10px;
   transform: rotate(180deg);
-  margin-left: 790px;
 }
 
 .finish-time {
