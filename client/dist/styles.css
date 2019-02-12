@@ -1,0 +1,99 @@
+/* App container */
+
+body {
+  font: 12px/1.4 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda,Verdana, Tahoma, sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  position: relative;
+  width: 1241px;
+  height: 382px;
+  background: linear-gradient(135deg, rgb(232, 232, 232) 0%, rgb(141, 160, 152) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* image */
+
+.imageContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+  margin-right: 22px;
+}
+
+.image {
+  height: 340px;
+  width: 340px;
+}
+
+
+/* Button Container */
+
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  margin-top: 31px;
+  margin-left: 31px;
+}
+
+.playBtn {
+  color: #f50;
+}
+
+
+
+/* Song Info */
+
+.Info-Container {
+  display: table-column;
+  margin-top: 28px;
+  margin-left: 10px;
+  width: 580px;
+  height: 400px;
+  margin-right: 200px;
+}
+
+/* .Info-Container {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1000px;
+  margin-top: 28px;
+  margin-left: 10px;
+  line-break: auto;
+} */
+
+.Artist-Name {
+  background-color: rgba(0,0,0,.8);
+  color: #ccc;
+  font-size: 16px;
+  width: fit-content;
+  max-width: 200px;
+  max-height: 25px;
+  margin-bottom: 7px;
+  padding: 2px 7px 3px;
+}
+
+.Artist-Name:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.Song-Name {
+  background-color: rgba(0,0,0,.8);
+  color: white;
+  font-size: 24px;
+  width: fit-content;
+  max-width: 574px;
+  max-height: 39px;
+  padding: 2.5px 7px;
+}
