@@ -167,6 +167,12 @@ body {
   margin-right: 31px;
 }
 
+.top {
+  width: 2.5px;
+  background: white;
+  margin-right: 1px;
+}
+
 .start-time {
   background: rgba(0,0,0,.8);
   width: 28px;
