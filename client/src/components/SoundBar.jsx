@@ -1,69 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// class SoundBar extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-
-//     };
-//     this.props.sound.decibel = this.props.sound.decibel.bind(this);
-//   }
-
-//   render() {
-//     const Bars = () => {
-//       let barArray = [];
-//       for (let i = 1; i < 200; i++) {
-//         // const randomNum = Math.floor(Math.random() * 10);
-//         barArray.push(<span key={i} ></span>)
-//       }
-//       return barArray;
-//     }
-//     return (
-//       <div className="sound-container">
-//         <BarStyle sound={this.props.sound.decibel}>
-//           {Bars()}
-//         </BarStyle>
-//       </div>
-//     );
-//   }
-// }
-
-const SoundBar = (props) => {
-  const Bars = () => {
-    const barArray = [];
-    const barArrayBottom = [];
-    for (let i = 1; i < 274; i += 1) {
-      const randomNum = Math.floor(Math.random() * props.sound.decibel);
-      barArray.push(<BarStyleSpan style={{ height: randomNum }} key={i} />);
-      barArrayBottom.push(<BarStyleSpan style={{ height: (randomNum / 2.5) }} key={i} />);
-    }
-    return [barArray, barArrayBottom];
+class SoundBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bar: 0,
+    };
+    this.handleHoverChange = this.handleHoverChange.bind(this);
+    // this.handleHoverOff = this.handleHoverOff.bind(this);
   };
-  return (
-    <div>
-      <div className="sound-container-top">
-        <span className="start-time">0:00</span>
-        {Bars()[0]}
-        <span className="finish-time">2:20</span>
-      </div>
-      <div className="sound-container-bottom">
-        {Bars()[1]}
-      </div>
-    </div>
-  );
-};
 
-// const randomNum = {this.props.sound}
-// className={`Bar${randomNum}`}
+
+  handleHoverChange(event) {
+    event.preventDefault();
+    event.target.style.background = 'rgb(255, 85, 0, .5)';
+    // this.setState({
+    //   bar: event.target.id,
+    // })
+    console.log(event.target.id)
+  };
+
+  // handleHoverOff(event) {
+  //   event.preventDefault();
+  //   event.target.style.background = 'white';
+  // };
+
+  render() {
+    const Bars = () => {
+      const barArray = [];
+      const barArrayBottom = [];
+      for (let i = 1; i < 274; i += 1) {
+        const randomNum = Math.floor(Math.random() * this.props.sound.decibel);
+        barArray.push(<BarStyleSpan id={`${i}`} style={{ height: randomNum }} key={i} onMouseOver={this.handleHoverChange} />);
+        barArrayBottom.push(<BarStyleSpan style={{ height: (randomNum / 2.5) }} key={i} />);
+      }
+      // barArray.filter((bar, i) => {
+      //   if (bar.id <= this.state.bar) {
+      //     return <BarStyleSpan id={`${i}`} style={{ height: randomNum }} key={i} onMouseOver={this.handleHoverChange} />
+      //   }
+      // })
+      return [barArray, barArrayBottom];
+    };
+    return (
+      <div>
+        <div className="sound-container-top">
+          <span className="start-time">0:00</span>
+          {Bars()[0]}
+          <span className="finish-time">2:20</span>
+        </div>
+        <div className="sound-container-bottom">
+          {Bars()[1]}
+        </div>
+      </div>
+    );
+  }
+}
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
   background: white;
   margin-right: 1px;
   &:hover {
-    background: #f50;
+    background: rgb(255, 85, 0, .5);
   }
 `;
+
+// const SoundBar = (props) => {
+//   const Bars = () => {
+//     const barArray = [];
+//     const barArrayBottom = [];
+//     for (let i = 1; i < 274; i += 1) {
+//       const randomNum = Math.floor(Math.random() * props.sound.decibel);
+//       barArray.push(<BarStyleSpan style={{ height: randomNum }} key={i} />);
+//       barArrayBottom.push(<BarStyleSpan style={{ height: (randomNum / 2.5) }} key={i} />);
+//     }
+//     return [barArray, barArrayBottom];
+//   };
+//   return (
+//     <div>
+//       <div className="sound-container-top">
+//         <span className="start-time">0:00</span>
+//         {Bars()[0]}
+//         <span className="finish-time">2:20</span>
+//       </div>
+//       <div className="sound-container-bottom">
+//         {Bars()[1]}
+//       </div>
+//     </div>
+//   );
+// };
+
+
+// const randomNum = {this.props.sound}
+// className={`Bar${randomNum}`}
+
 
 export default SoundBar;
