@@ -5,7 +5,7 @@ class SoundBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bar: 0,
+      bar: 274,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
     // this.handleHoverOff = this.handleHoverOff.bind(this);
@@ -14,11 +14,12 @@ class SoundBar extends React.Component {
 
   handleHoverChange(event) {
     event.preventDefault();
-    event.target.style.background = 'rgb(255, 85, 0, .5)';
-    // this.setState({
-    //   bar: event.target.id,
-    // })
-    console.log(event.target.id)
+    // event.target.style.background = 'rgb(255, 85, 0, .5)';
+    this.setState({
+      bar: event.target.id,
+    })
+    console.log(this.state.bar);
+    console.log(event.target.id);
   };
 
   // handleHoverOff(event) {
@@ -35,11 +36,11 @@ class SoundBar extends React.Component {
         barArray.push(<BarStyleSpan id={`${i}`} style={{ height: randomNum }} key={i} onMouseOver={this.handleHoverChange} />);
         barArrayBottom.push(<BarStyleSpan style={{ height: (randomNum / 2.5) }} key={i} />);
       }
-      // barArray.filter((bar, i) => {
-      //   if (bar.id <= this.state.bar) {
-      //     return <BarStyleSpan id={`${i}`} style={{ height: randomNum }} key={i} onMouseOver={this.handleHoverChange} />
-      //   }
-      // })
+      barArray.filter(el => {
+        if (el.key >= this.state.bar) {
+          el.props.style.background = 'orange'
+        }
+      })
       return [barArray, barArrayBottom];
     };
     return (
@@ -61,9 +62,9 @@ const BarStyleSpan = styled.span`
   width: 2.5px;
   background: white;
   margin-right: 1px;
-  &:hover {
-    background: rgb(255, 85, 0, .5);
-  }
+  // &:hover {
+  //   background: rgb(255, 85, 0, .5);
+  // }
 `;
 
 // const SoundBar = (props) => {
