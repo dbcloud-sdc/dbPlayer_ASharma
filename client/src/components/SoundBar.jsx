@@ -13,45 +13,66 @@ class SoundBar extends React.Component {
     this.isHovered = this.isHovered.bind(this);
   }
 
-  isHovered(index) {
+  // componentDidMount() {
+  //   for (let i = 1; i < 274; i += 1) {
+  //     // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
+  //     this.setState(state => state.randomNum.push(Math.floor(Math.random() * 20)));
+  //   }
+  // }
 
-    if (this.state.bar <= index) {
-      console.log('true')
-      return true;
-    } else {
-      console.log('false')
-      return false;
+  componentDidUpdate(prevProps, prevState) {
+    if (!_.isEqual(prevProps, this.props)) {
+      for (let i = 1; i < 274; i += 1) {
+        // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
+        this.setState(state => state.randomNum.push(Math.floor(Math.random() * 20)));
+      }
     }
+  }
+
+  isHovered(index) {
+    console.log('index', index);
+    if (this.state.bar <= index) {
+      console.log('true');
+      return true;
+    }
+    console.log('false');
+    return false;
   }
 
   handleHoverChange(index) {
     // event.target.style.background = 'rgb(255, 85, 0, .5)';
     this.setState({
-      bar: index
+      bar: index,
     });
-  };
+  }
 
   // handleHoverOff(event) {
   //   event.preventDefault();
   //   event.target.style.background = 'white';
   // };
-  componentDidMount() {
 
-      for (let i = 1; i < 274; i += 1) {
-        // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
-        this.setState((state) => state.randomNum.push(Math.floor(Math.random() * 20)))
-      }
-    
-  }
+
   render() {
     const Bars = () => {
       const barArray = [];
       const barArrayBottom = [];
       for (let i = 1; i < 274; i += 1) {
         // const randomNum = Math.floor(Math.random() * this.props.sound.decibel);
-        barArray.push(<BarStyleSpan id={`${i}`} style={{ height: this.state.randomNum[i] }} key={i} onMouseEnter={() => {this.handleHoverChange(i); this.isHovered()}} isHovered={() => this.isHovered(i)} />);
-        barArrayBottom.push(<BarStyleSpan style={{ height: (this.state.randomNum[i] / 2.5) }} key={i} />);
+        barArray.push(<BarStyleSpan
+          id={`${i}`}
+          style={{ height: this.state.randomNum[i] }}
+          key={i}
+          onMouseEnter={() => { this.handleHoverChange(i); }}
+          isHovered={Boolean(this.state.bar <= i)}
+        />);
+        barArrayBottom.push(<BarStyleSpan
+          style={{ height: (this.state.randomNum[i] / 2.5) }}
+          key={i}
+          onMouseEnter={() => { this.handleHoverChange(i); }}
+          isHovered={Boolean(this.state.bar <= i)}
+        />);
       }
+
       // barArray.filter(el => {
       //   if (el.props.id >= this.state.bar) {
       //     el.props.style.background = 'orange'
@@ -59,7 +80,7 @@ class SoundBar extends React.Component {
       //     el.props.style.background = 'white'
       //   }
       // })
-      return [barArray, barArrayBottom];
+      return [barArray, barArrayBottom.reverse()];
     };
     return (
       <div>
@@ -137,7 +158,7 @@ class SoundBar extends React.Component {
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
-  background: ${(props) => props.isHovered ? 'white' : 'orange' };
+  background: ${props => (props.isHovered ? 'orange' : 'white')};
   margin-right: 1px;
   // &:hover {
   //   background: rgb(255, 85, 0, .5);
