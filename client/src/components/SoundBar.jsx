@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-
 class SoundBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bar: 274,
+      bar: 0,
       randomNum: [],
       seconds: 0,
+      timePast: false,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
@@ -27,8 +27,6 @@ class SoundBar extends React.Component {
   }
 
   tick() {
-    // const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
-    // console.log(songTime)
     if (this.props.play && this.state.seconds < this.props.sound.songlength) {
       this.setState({
         seconds: this.state.seconds + 1,
@@ -44,15 +42,9 @@ class SoundBar extends React.Component {
 
   handleLeave() {
     this.setState({
-      bar: 274,
+      bar: 0,
     });
   }
-
-  // handleTime(index) {
-  //   if (this.state.seconds <= (index / 4.56)) {
-  //     this.style={ background: 'orange' };
-  //   }
-  // }
 
   render() {
     const Bars = () => {
@@ -63,19 +55,19 @@ class SoundBar extends React.Component {
           id={`${i}`}
           style={{ height: this.state.randomNum[i] }}
           key={i}
-          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
-          isHovered={Boolean(this.state.bar <= i)}
+          isHovered={Boolean(this.state.bar >= i)}
+          isComplete={Boolean(this.state.seconds >= (i * 2.56))}
         />);
         barArrayBottom.push(<BarStyleSpan
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
-          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
-          isHovered={Boolean(this.state.bar <= i)}
+          isHovered={Boolean(this.state.bar >= i)}
+          isComplete={Boolean(this.state.seconds >= (i * 2.56))}
         />);
       }
-      return [barArray, barArrayBottom.reverse()];
+      return [barArray.reverse(), barArrayBottom];
     };
     const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
     const startTime = moment.utc(this.state.seconds * 1000).format('m:ss');
@@ -96,7 +88,10 @@ class SoundBar extends React.Component {
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
-  background: ${props => (props.isHovered ? 'rgb(255, 85, 0, .5)' : 'white')};
+  background: ${props => (props.isComplete ? '#f50' 
+  : props.isHovered ? 'rgb(255, 85, 0, .5)'
+  : props.isHovered && props.isComplete ? 'rgb(255, 85, 0, .5)' 
+  : 'white')};
   margin-right: 1px;
 `;
 
