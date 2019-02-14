@@ -65,7 +65,7 @@ Song.sync({ force: true }).then(() => {
       hashtag: faker.random.word(),
       timeelapsed: faker.date.past(),
       starttime: 0,
-      songlength: faker.random.number(),
+      songlength: faker.random.number({ min: 120, max: 620 }),
       decibel: faker.random.number({ min: 22, max: 80 }),
       comment: faker.lorem.sentence(),
     }).save();

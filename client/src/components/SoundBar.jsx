@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 class SoundBar extends React.Component {
   constructor(props) {
@@ -53,12 +54,13 @@ class SoundBar extends React.Component {
       }
       return [barArray, barArrayBottom.reverse()];
     };
+    const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
     return (
       <div>
         <div className="sound-container-top" onMouseLeave={this.handleLeave}>
           <span className="start-time">0:00</span>
           {Bars()[0]}
-          <span className="finish-time">2:20</span>
+          <span className="finish-time">{songTime}</span>
         </div>
         <div className="sound-container-bottom">
           {Bars()[1]}
