@@ -44,7 +44,7 @@ const Song = sequelize.define('songplayer', {
     allowNull: false,
   },
   decibel: {
-    type: Sequelize.INTEGER(11),
+    type: Sequelize.INTEGER(3),
     allowNull: false,
   },
   comment: {

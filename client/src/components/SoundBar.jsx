@@ -9,55 +9,47 @@ class SoundBar extends React.Component {
       randomNum: [],
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
-    // this.handleHoverOff = this.handleHoverOff.bind(this);
-    this.isHovered = this.isHovered.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
   }
 
   // componentDidMount() {
-  //   for (let i = 1; i < 274; i += 1) {
-  //     // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
-  //     this.setState(state => state.randomNum.push(Math.floor(Math.random() * 20)));
+  //   this.test();
+  // }
+
+  componentDidMount() {
+    for (let i = 1; i < 274; i += 1) {
+      console.log('in componentedidmount', this.props.sound);
+      // const randomNum = Math.floor(Math.random() * this.props.sound.decibel);
+      this.setState(state => state.randomNum.push(Math.floor(Math.random() * 80)));
+    }
+  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (!_.isEqual(prevProps, this.props)) {
+  //     for (let i = 1; i < 274; i += 1) {
+  //       // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
+  //       this.setState(state => state.randomNum.push(Math.floor(Math.random() * 20)));
+  //     }
   //   }
   // }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!_.isEqual(prevProps, this.props)) {
-      for (let i = 1; i < 274; i += 1) {
-        // const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
-        this.setState(state => state.randomNum.push(Math.floor(Math.random() * 20)));
-      }
-    }
-  }
-
-  isHovered(index) {
-    console.log('index', index);
-    if (this.state.bar <= index) {
-      console.log('true');
-      return true;
-    }
-    console.log('false');
-    return false;
-  }
-
   handleHoverChange(index) {
-    // event.target.style.background = 'rgb(255, 85, 0, .5)';
     this.setState({
       bar: index,
     });
   }
 
-  // handleHoverOff(event) {
-  //   event.preventDefault();
-  //   event.target.style.background = 'white';
-  // };
-
+  handleLeave() {
+    this.setState({
+      bar: 274,
+    });
+  }
 
   render() {
+    console.log('in render', this.props.sound);
     const Bars = () => {
       const barArray = [];
       const barArrayBottom = [];
       for (let i = 1; i < 274; i += 1) {
-        // const randomNum = Math.floor(Math.random() * this.props.sound.decibel);
         barArray.push(<BarStyleSpan
           id={`${i}`}
           style={{ height: this.state.randomNum[i] }}
@@ -72,19 +64,11 @@ class SoundBar extends React.Component {
           isHovered={Boolean(this.state.bar <= i)}
         />);
       }
-
-      // barArray.filter(el => {
-      //   if (el.props.id >= this.state.bar) {
-      //     el.props.style.background = 'orange'
-      //   } else {
-      //     el.props.style.background = 'white'
-      //   }
-      // })
       return [barArray, barArrayBottom.reverse()];
     };
     return (
       <div>
-        <div className="sound-container-top">
+        <div className="sound-container-top" onMouseLeave={this.handleLeave}>
           <span className="start-time">0:00</span>
           {Bars()[0]}
           <span className="finish-time">2:20</span>
@@ -158,11 +142,8 @@ class SoundBar extends React.Component {
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
-  background: ${props => (props.isHovered ? 'orange' : 'white')};
+  background: ${props => (props.isHovered ? 'rgb(255, 85, 0, .5)' : 'white')};
   margin-right: 1px;
-  // &:hover {
-  //   background: rgb(255, 85, 0, .5);
-  // }
 `;
 
 // const SoundBar = (props) => {
