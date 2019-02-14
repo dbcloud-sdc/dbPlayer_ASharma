@@ -68,10 +68,11 @@ class SoundBar extends React.Component {
       return [barArray, barArrayBottom.reverse()];
     };
     const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
+    const startTime = moment.utc(this.state.seconds * 1000).format('m:ss');
     return (
       <div>
         <div className="sound-container-top" onMouseLeave={this.handleLeave}>
-          <span className="start-time">{this.state.seconds}</span>
+          <span className="start-time">{startTime}</span>
           {Bars()[0]}
           <span className="finish-time">{songTime}</span>
         </div>
