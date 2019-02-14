@@ -6,6 +6,7 @@ import ArtistImage from './ArtistImage';
 import PlayButton from './PlayButton';
 import SongInfo from './SongInfo';
 import ElapsedTime from './ElapsedTime';
+import SoundBar from './SoundBar';
 import ajax from '../../lib/ajax';
 
 library.add(faPlayCircle);
@@ -52,11 +53,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <ArtistImage img={this.state.image} />
-        <ElapsedTime info={this.state.songs} />
-        <SongInfo song={this.state.songs} />
-        <PlayButton />
+      <div>
+        <div className="container">
+          <ArtistImage img={this.state.image} />
+          <ElapsedTime info={this.state.songs} />
+          <SongInfo song={this.state.songs} />
+          <PlayButton />
+          {
+            this.state.songs.decibel
+            && (
+            <div className="soundbar">
+              <SoundBar sound={this.state.songs} />
+            </div>
+            )
+          }
+        </div>
       </div>
     );
   }

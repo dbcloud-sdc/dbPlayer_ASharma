@@ -66,7 +66,7 @@ Song.sync({ force: true }).then(() => {
       timeelapsed: faker.date.past(),
       starttime: 0,
       songlength: faker.random.number(),
-      decibel: faker.random.number(),
+      decibel: faker.random.number({ min: 22, max: 80 }),
       comment: faker.lorem.sentence(),
     }).save();
     songs.push(songMaker);

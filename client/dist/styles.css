@@ -58,7 +58,7 @@ body {
   margin-top: 28px;
   margin-left: 10px;
   width: 578px;
-  height: 400px;
+  height: 200px;
   margin-right: 20px;
 }
 
@@ -79,7 +79,7 @@ body {
   width: fit-content;
   max-width: 200px;
   max-height: 25px;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   padding: 2px 7px 3px;
 }
 
@@ -137,4 +137,54 @@ body {
 .hashtag:hover {
   cursor: pointer;
   background: #667;
+}
+
+/* Sound Bar */
+
+.sound-container-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 820px;
+  height: 80px;
+  position: absolute;
+  transform: rotate(180deg);
+  margin-top: 240px;
+  margin-left: 31px;
+  margin-right: 31px;
+  margin-bottom: 2px;
+}
+
+.sound-container-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 820px;
+  height: 30px;
+  position: absolute;
+  margin-top: 322px;
+  margin-left: 33px;
+  margin-right: 31px;
+}
+
+.start-time {
+  background: rgba(0,0,0,.8);
+  width: 28px;
+  height: 16px;
+  position: absolute;
+  color: #f50;
+  right: 0;
+  top: 0;
+  font: 10px;
+  transform: rotate(180deg);
+}
+
+.finish-time {
+  background: rgba(0,0,0,.8);
+  width: 28px;
+  height: 16px;
+  position: absolute;
+  color: #999;
+  font: 10px;
+  transform: rotate(180deg);
 }
