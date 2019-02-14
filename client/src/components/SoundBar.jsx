@@ -27,7 +27,9 @@ class SoundBar extends React.Component {
   }
 
   tick() {
-    if (this.props.play) {
+    // const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
+    // console.log(songTime)
+    if (this.props.play && this.state.seconds < this.props.sound.songlength) {
       this.setState({
         seconds: this.state.seconds + 1,
       });
@@ -46,6 +48,12 @@ class SoundBar extends React.Component {
     });
   }
 
+  // handleTime(index) {
+  //   if (this.state.seconds <= (index / 4.56)) {
+  //     this.style={ background: 'orange' };
+  //   }
+  // }
+
   render() {
     const Bars = () => {
       const barArray = [];
@@ -55,12 +63,14 @@ class SoundBar extends React.Component {
           id={`${i}`}
           style={{ height: this.state.randomNum[i] }}
           key={i}
+          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar <= i)}
         />);
         barArrayBottom.push(<BarStyleSpan
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
+          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar <= i)}
         />);
