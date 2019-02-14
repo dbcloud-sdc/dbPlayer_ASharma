@@ -59,9 +59,14 @@ class App extends React.Component {
           <ElapsedTime info={this.state.songs} />
           <SongInfo song={this.state.songs} />
           <PlayButton />
-          <div className="soundbar">
-            <SoundBar sound={this.state.songs} />
-          </div>
+          {
+            this.state.songs.decibel
+            && (
+            <div className="soundbar">
+              <SoundBar sound={this.state.songs} />
+            </div>
+            )
+          }
         </div>
       </div>
     );
