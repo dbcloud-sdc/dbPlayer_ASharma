@@ -8,12 +8,10 @@ class SoundBar extends React.Component {
       bar: 0,
       randomNum: [],
       seconds: 0,
-      timePast: false,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
   }
-
 
   componentDidMount() {
     for (let i = 1; i < 275; i += 1) {
@@ -50,21 +48,25 @@ class SoundBar extends React.Component {
     const Bars = () => {
       const barArray = [];
       const barArrayBottom = [];
+      const songLength = this.props.sound.songLength;
+      console.log(this.props.sound.songlength);
       for (let i = 1; i < 274; i += 1) {
         barArray.push(<BarStyleSpan
           id={`${i}`}
           style={{ height: this.state.randomNum[i] }}
           key={i}
+          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar >= i)}
-          isComplete={Boolean(this.state.seconds >= (i * 2.56))}
+          isComplete={Boolean(this.state.seconds >= i)}
         />);
         barArrayBottom.push(<BarStyleSpan
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
+          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar >= i)}
-          isComplete={Boolean(this.state.seconds >= (i * 2.56))}
+          isComplete={Boolean(this.state.seconds >= i)}
         />);
       }
       return [barArray.reverse(), barArrayBottom];
@@ -72,8 +74,8 @@ class SoundBar extends React.Component {
     const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
     const startTime = moment.utc(this.state.seconds * 1000).format('m:ss');
     return (
-      <div>
-        <div className="sound-container-top" onMouseLeave={this.handleLeave}>
+      <div onMouseLeave={this.handleLeave}>
+        <div className="sound-container-top">
           <span className="start-time">{startTime}</span>
           {Bars()[0]}
           <span className="finish-time">{songTime}</span>
@@ -88,9 +90,9 @@ class SoundBar extends React.Component {
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
-  background: ${props => (props.isComplete ? '#f50' 
+  background: ${props => (props.isComplete ? '#f50'
   : props.isHovered ? 'rgb(255, 85, 0, .5)'
-  : props.isHovered && props.isComplete ? 'rgb(255, 85, 0, .5)' 
+  : props.isHovered && props.isComplete ? 'rgb(255, 85, 0, .5)'
   : 'white')};
   margin-right: 1px;
 `;
