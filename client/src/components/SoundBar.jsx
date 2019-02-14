@@ -8,7 +8,7 @@ class SoundBar extends React.Component {
     this.state = {
       bar: 274,
       randomNum: [],
-      seconds: new Date(),
+      seconds: 0,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
@@ -29,7 +29,7 @@ class SoundBar extends React.Component {
   tick() {
     if (this.props.play) {
       this.setState({
-        seconds: new Date(),
+        seconds: this.state.seconds + 1,
       });
     }
   }
@@ -71,7 +71,7 @@ class SoundBar extends React.Component {
     return (
       <div>
         <div className="sound-container-top" onMouseLeave={this.handleLeave}>
-          <span className="start-time">{this.state.seconds.toLocaleTimeString()}</span>
+          <span className="start-time">{this.state.seconds}</span>
           {Bars()[0]}
           <span className="finish-time">{songTime}</span>
         </div>
