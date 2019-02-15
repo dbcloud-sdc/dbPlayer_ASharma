@@ -6,8 +6,16 @@ class Comment extends React.Component {
     super(props);
     this.state = {
       display: 0,
+      commentCount: 0,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
+  }
+
+  componentDidMount() {
+    const randomNum = () => Math.floor(Math.random() * 21);
+    this.setState({
+      commentCount: randomNum(),
+    });
   }
 
   handleHoverChange(index) {
@@ -19,8 +27,7 @@ class Comment extends React.Component {
   render() {
     const CommentImage = () => {
       const imgArray = [];
-      const randomNum = Math.floor(Math.random() * 21);
-      for (let i = 1; i < randomNum; i += 1) {
+      for (let i = 1; i < this.state.commentCount; i += 1) {
         imgArray.push(<CommentSpan
           key={i}
           style={{ backgroundImage: `url(${this.props.random[i]})` }}
@@ -46,8 +53,8 @@ const CommentSpan = styled.span`
 export default Comment;
 
 
-//add text / username from random data
-//if hover is true color will = black if false color will be clear or whatever
-//can add conditional for timestamp as well
+// add text / username from random data
+// if hover is true color will = black if false color will be clear or whatever
+// can add conditional for timestamp as well
 
-//to get random number of comments.  generate a random number between 1-22 and put it in place of i < blank on span tage generation.  try it at 100 and see how it looks.  maybe they naturally overlap 
+// to get random number of comments.  generate a random number between 1-22 and put it in place of i < blank on span tage generation.  try it at 100 and see how it looks.  maybe they naturally overlap
