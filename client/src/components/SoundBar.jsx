@@ -1,22 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import moment from 'moment';
 class SoundBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bar: 274,
+      bar: 0,
       randomNum: [],
+      seconds: 0,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
   }
 
-
   componentDidMount() {
     for (let i = 1; i < 275; i += 1) {
       const randomNum = () => Math.floor(Math.random() * this.props.sound.decibel);
       this.setState(state => state.randomNum.push(randomNum()));
+    }
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000,
+    );
+  }
+
+  tick() {
+    if (this.props.play && this.state.seconds < this.props.sound.songlength) {
+      this.setState({
+        seconds: this.state.seconds + 1,
+      });
     }
   }
 
@@ -28,7 +40,14 @@ class SoundBar extends React.Component {
 
   handleLeave() {
     this.setState({
-      bar: 274,
+      bar: 0,
+    });
+  }
+
+  handleChangeTime(index) {
+    this.setState({
+      bar: index,
+      seconds: ((index * this.props.sound.songlength) / (273)),
     });
   }
 
@@ -42,23 +61,29 @@ class SoundBar extends React.Component {
           style={{ height: this.state.randomNum[i] }}
           key={i}
           onMouseEnter={() => { this.handleHoverChange(i); }}
-          isHovered={Boolean(this.state.bar <= i)}
+          isHovered={Boolean(this.state.bar >= i)}
+          isComplete={Boolean((this.state.seconds * 4.56) / (this.props.sound.songlength / 60) >= i)}
+          onClick={() => { this.handleChangeTime(i); }}
         />);
         barArrayBottom.push(<BarStyleSpan
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
           onMouseEnter={() => { this.handleHoverChange(i); }}
-          isHovered={Boolean(this.state.bar <= i)}
+          isHovered={Boolean(this.state.bar >= i)}
+          isComplete={Boolean((this.state.seconds * 4.56) / (this.props.sound.songlength / 60) >= i)}
+          onClick={() => { this.handleChangeTime(i); }}
         />);
       }
-      return [barArray, barArrayBottom.reverse()];
+      return [barArray.reverse(), barArrayBottom];
     };
+    const songTime = moment.utc(this.props.sound.songlength * 1000).format('m:ss');
+    const startTime = moment.utc(this.state.seconds * 1000).format('m:ss');
     return (
-      <div>
-        <div className="sound-container-top" onMouseLeave={this.handleLeave}>
-          <span className="start-time">0:00</span>
+      <div onMouseLeave={this.handleLeave}>
+        <div className="sound-container-top">
+          <span className="start-time">{startTime}</span>
           {Bars()[0]}
-          <span className="finish-time">2:20</span>
+          <span className="finish-time">{songTime}</span>
         </div>
         <div className="sound-container-bottom">
           {Bars()[1]}
@@ -70,8 +95,12 @@ class SoundBar extends React.Component {
 
 const BarStyleSpan = styled.span`
   width: 2.5px;
-  background: ${props => (props.isHovered ? 'rgb(255, 85, 0, .5)' : 'white')};
+  background: ${props => (props.isComplete ? '#f50'
+  : props.isHovered ? 'rgb(255, 85, 0, .5)'
+  : props.isHovered && props.isComplete ? 'rgb(255, 85, 0, .5)'
+  : 'white')};
   margin-right: 1px;
+  cursor: pointer;
 `;
 
 export default SoundBar;

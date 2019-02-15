@@ -17,7 +17,9 @@ class App extends React.Component {
     this.state = {
       image: [],
       songs: [],
+      playStatus: false,
     };
+    this.handlePlayButton = this.handlePlayButton.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +53,12 @@ class App extends React.Component {
     });
   }
 
+  handlePlayButton() {
+    this.setState({
+      playStatus: !this.state.playStatus,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -58,12 +66,12 @@ class App extends React.Component {
           <ArtistImage img={this.state.image} />
           <ElapsedTime info={this.state.songs} />
           <SongInfo song={this.state.songs} />
-          <PlayButton />
+          <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
           {
-            this.state.songs.decibel
+            this.state.songs.decibel && this.state.songs.songlength
             && (
             <div className="soundbar">
-              <SoundBar sound={this.state.songs} />
+              <SoundBar sound={this.state.songs} play={this.state.playStatus} />
             </div>
             )
           }
