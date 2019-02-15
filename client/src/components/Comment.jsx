@@ -15,7 +15,7 @@ class Comment extends React.Component {
       for (let i = 1; i < 21; i += 1) {
         imgArray.push(<CommentSpan
           key={i}
-          style={{ backgroundImage: `url(${this.props.img.imgurl})` }}
+          style={{ backgroundImage: `url(${this.props.random[i]})` }}
         />);
       }
       return imgArray;
@@ -31,11 +31,7 @@ class Comment extends React.Component {
 const CommentSpan = styled.span`
   width: 22px;
   height: 22px;
-  // position: absolute;
-  // margin-right: 40px;
   justify-content: space-between;
 `;
 
-{/* <img className="image" src={props.img.imgurl} alt="" /> */}
-
-export default Comment
+export default Comment;

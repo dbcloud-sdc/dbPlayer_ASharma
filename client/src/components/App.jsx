@@ -18,6 +18,7 @@ class App extends React.Component {
     this.state = {
       image: [],
       songs: [],
+      randomImage: [],
       playStatus: false,
     };
     this.handlePlayButton = this.handlePlayButton.bind(this);
@@ -26,6 +27,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getImage();
     this.getSongs();
+    this.getRandomImage();
   }
 
   getImage() {
@@ -36,6 +38,23 @@ class App extends React.Component {
         const randomIndex = Math.floor(Math.random() * 100);
         this.setState({
           image: data[randomIndex],
+        });
+      }
+    });
+  }
+
+  getRandomImage() {
+    ajax.getAllImages((err, data) => {
+      if (err) {
+        console.log('getImage failed', err);
+      } else {
+        const img = [];
+        for (let i = 0; i < 21; i += 1) {
+          const randomIndex = Math.floor(Math.random() * 100);
+          img.push(data[randomIndex].imgurl);
+        }
+        this.setState({
+          randomImage: img,
         });
       }
     });
@@ -69,14 +88,14 @@ class App extends React.Component {
           <SongInfo song={this.state.songs} />
           <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
           {
-            this.state.songs.decibel && this.state.songs.songlength && this.state.image.imgurl
+            this.state.songs.decibel && this.state.songs.songlength && this.state.image.imgurl && this.state.randomImage
             && (
             <div>
               <div className="soundbar">
                 <SoundBar sound={this.state.songs} play={this.state.playStatus} />
               </div>
               <div>
-                <Comment img={this.state.image} />
+                <Comment img={this.state.image} random={this.state.randomImage} />
               </div>
             </div>
             )
