@@ -163,7 +163,7 @@ body {
   height: 30px;
   position: absolute;
   margin-top: 322px;
-  margin-left: 33px;
+  margin-left: 32px;
   margin-right: 31px;
 }
 
@@ -187,4 +187,16 @@ body {
   color: #999;
   font: 10px;
   transform: rotate(180deg);
+}
+
+/* Comments */
+
+.comment-container {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  position: absolute;
+  left: 3%;
+  bottom: 10%;
+  justify-content: space-between;
 }

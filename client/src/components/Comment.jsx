@@ -13,7 +13,7 @@ class Comment extends React.Component {
     const CommentImage = () => {
       const imgArray = [];
       for (let i = 1; i < 21; i += 1) {
-        imgArray.push(<CommentDiv
+        imgArray.push(<CommentSpan
           key={i}
           style={{ backgroundImage: `url(${this.props.img.imgurl})` }}
         />);
@@ -21,17 +21,19 @@ class Comment extends React.Component {
       return imgArray;
     };
     return (
-      <span>
+      <div className="comment-container">
         {CommentImage()}
-      </span>
+      </div>
     );
   }
 }
 
-const CommentDiv = styled.div`
+const CommentSpan = styled.span`
   width: 22px;
   height: 22px;
-  position: absolute;
+  // position: absolute;
+  // margin-right: 40px;
+  justify-content: space-between;
 `;
 
 {/* <img className="image" src={props.img.imgurl} alt="" /> */}
