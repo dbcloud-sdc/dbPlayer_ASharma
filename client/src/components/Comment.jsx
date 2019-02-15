@@ -12,7 +12,7 @@ class Comment extends React.Component {
   }
 
   componentDidMount() {
-    const randomNum = () => Math.floor(Math.random() * 21);
+    const randomNum = () => Math.floor(Math.random() * 60) + 20;
     this.setState({
       commentCount: randomNum(),
     });

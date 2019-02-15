@@ -49,7 +49,7 @@ class App extends React.Component {
         console.log('getImage failed', err);
       } else {
         const img = [];
-        for (let i = 0; i < 21; i += 1) {
+        for (let i = 0; i < 80; i += 1) {
           const randomIndex = Math.floor(Math.random() * 100);
           img.push(data[randomIndex].imgurl);
         }
