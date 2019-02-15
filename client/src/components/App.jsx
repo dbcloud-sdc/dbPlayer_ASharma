@@ -7,6 +7,7 @@ import PlayButton from './PlayButton';
 import SongInfo from './SongInfo';
 import ElapsedTime from './ElapsedTime';
 import SoundBar from './SoundBar';
+import Comment from './Comment';
 import ajax from '../../lib/ajax';
 
 library.add(faPlayCircle);
@@ -68,10 +69,15 @@ class App extends React.Component {
           <SongInfo song={this.state.songs} />
           <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
           {
-            this.state.songs.decibel && this.state.songs.songlength
+            this.state.songs.decibel && this.state.songs.songlength && this.state.image.imgurl
             && (
-            <div className="soundbar">
-              <SoundBar sound={this.state.songs} play={this.state.playStatus} />
+            <div>
+              <div className="soundbar">
+                <SoundBar sound={this.state.songs} play={this.state.playStatus} />
+              </div>
+              <div>
+                <Comment img={this.state.image} />
+              </div>
             </div>
             )
           }
