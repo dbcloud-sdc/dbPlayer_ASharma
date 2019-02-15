@@ -44,29 +44,34 @@ class SoundBar extends React.Component {
     });
   }
 
+  handleChangeTime(index) {
+    this.setState({
+      bar: index,
+      seconds: ((index * this.props.sound.songlength) / (273)),
+    });
+  }
+
   render() {
     const Bars = () => {
       const barArray = [];
       const barArrayBottom = [];
-      const songLength = this.props.sound.songLength;
-      console.log((this.state.seconds * (this.props.sound.songlength / 60)) / (this.props.sound.songlength / 60));
       for (let i = 1; i < 274; i += 1) {
         barArray.push(<BarStyleSpan
           id={`${i}`}
           style={{ height: this.state.randomNum[i] }}
           key={i}
-          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar >= i)}
           isComplete={Boolean((this.state.seconds * 4.56) / (this.props.sound.songlength / 60) >= i)}
+          onClick={() => { this.handleChangeTime(i); }}
         />);
         barArrayBottom.push(<BarStyleSpan
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
-          timeStamp={i / 4.56}
           onMouseEnter={() => { this.handleHoverChange(i); }}
           isHovered={Boolean(this.state.bar >= i)}
           isComplete={Boolean((this.state.seconds * 4.56) / (this.props.sound.songlength / 60) >= i)}
+          onClick={() => { this.handleChangeTime(i); }}
         />);
       }
       return [barArray.reverse(), barArrayBottom];
@@ -95,6 +100,7 @@ const BarStyleSpan = styled.span`
   : props.isHovered && props.isComplete ? 'rgb(255, 85, 0, .5)'
   : 'white')};
   margin-right: 1px;
+  cursor: pointer;
 `;
 
 export default SoundBar;

@@ -68,7 +68,7 @@ class App extends React.Component {
           <SongInfo song={this.state.songs} />
           <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
           {
-            this.state.songs.decibel
+            this.state.songs.decibel && this.state.songs.songlength
             && (
             <div className="soundbar">
               <SoundBar sound={this.state.songs} play={this.state.playStatus} />
