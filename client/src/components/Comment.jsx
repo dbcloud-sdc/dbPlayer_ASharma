@@ -44,10 +44,10 @@ class Comment extends React.Component {
             isHovered={Boolean(this.state.display === i)}
           >
             <CommentSpan isHovered={Boolean(this.state.display === i)}>
-              {this.props.info.comment}
+              {this.props.info[i]}
             </CommentSpan>
             <NameSpan isHovered={Boolean(this.state.display === i)}>
-              {this.props.info.artistname}
+              {this.props.name[i]}
             </NameSpan>
           </CommentDiv>,
         );
@@ -88,13 +88,4 @@ const NameSpan = styled.span`
   visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
 `;
 
-// visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
-
 export default Comment;
-
-
-// add text / username from random data
-// if hover is true color will = black if false color will be clear or whatever
-// can add conditional for timestamp as well
-
-// to get random number of comments.  generate a random number between 1-22 and put it in place of i < blank on span tage generation.  try it at 100 and see how it looks.  maybe they naturally overlap

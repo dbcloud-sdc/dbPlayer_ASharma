@@ -19,6 +19,8 @@ class App extends React.Component {
       image: [],
       songs: [],
       randomImage: [],
+      randomComment: [],
+      randomName: [],
       playStatus: false,
     };
     this.handlePlayButton = this.handlePlayButton.bind(this);
@@ -28,6 +30,8 @@ class App extends React.Component {
     this.getImage();
     this.getSongs();
     this.getRandomImage();
+    this.getRandomComment();
+    this.getRandomName();
   }
 
   getImage() {
@@ -46,7 +50,7 @@ class App extends React.Component {
   getRandomImage() {
     ajax.getAllImages((err, data) => {
       if (err) {
-        console.log('getImage failed', err);
+        console.log('getRandomImage failed', err);
       } else {
         const img = [];
         for (let i = 0; i < 80; i += 1) {
@@ -55,6 +59,40 @@ class App extends React.Component {
         }
         this.setState({
           randomImage: img,
+        });
+      }
+    });
+  }
+
+  getRandomComment() {
+    ajax.getAllSongs((err, data) => {
+      if (err) {
+        console.log('getRandomSongs Failed', err);
+      } else {
+        const comment = [];
+        for (let i = 0; i < 80; i += 1) {
+          const randomIndex = Math.floor(Math.random() * 100);
+          comment.push(data[randomIndex].comment);
+        }
+        this.setState({
+          randomComment: comment,
+        });
+      }
+    });
+  }
+
+  getRandomName() {
+    ajax.getAllSongs((err, data) => {
+      if (err) {
+        console.log('getRandomSongs Failed', err);
+      } else {
+        const name = [];
+        for (let i = 0; i < 80; i += 1) {
+          const randomIndex = Math.floor(Math.random() * 100);
+          name.push(data[randomIndex].artistname);
+        }
+        this.setState({
+          randomName: name,
         });
       }
     });
@@ -73,6 +111,7 @@ class App extends React.Component {
     });
   }
 
+
   handlePlayButton() {
     this.setState({
       playStatus: !this.state.playStatus,
@@ -88,14 +127,24 @@ class App extends React.Component {
           <SongInfo song={this.state.songs} />
           <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
           {
-            this.state.songs.decibel && this.state.songs.songlength && this.state.image.imgurl && this.state.randomImage
+            this.state.songs.decibel
+            && this.state.songs.songlength
+            && this.state.image.imgurl
+            && this.state.randomImage
             && (
             <div>
               <div className="soundbar">
-                <SoundBar sound={this.state.songs} play={this.state.playStatus} />
+                <SoundBar
+                  sound={this.state.songs}
+                  play={this.state.playStatus}
+                />
               </div>
               <div>
-                <Comment random={this.state.randomImage} info={this.state.songs} />
+                <Comment
+                  random={this.state.randomImage}
+                  info={this.state.randomComment}
+                  name={this.state.randomName}
+                />
               </div>
             </div>
             )
