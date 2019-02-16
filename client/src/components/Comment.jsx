@@ -41,12 +41,12 @@ class Comment extends React.Component {
             style={{ backgroundImage: `url(${this.props.random[i]})` }}
             onMouseEnter={() => this.handleHoverChange(i)}
             onMouseLeave={() => this.handleLeave()}
-            isHovered={Boolean(this.state.display) >= i}
+            isHovered={Boolean(this.state.display === i)}
           >
-            <CommentSpan isHovered={Boolean(this.state.display) >= i}>
+            <CommentSpan isHovered={Boolean(this.state.display === i)}>
               {this.props.info.comment}
             </CommentSpan>
-            <NameSpan isHovered={Boolean(this.state.display) >= i}>
+            <NameSpan isHovered={Boolean(this.state.display === i)}>
               {this.props.info.artistname}
             </NameSpan>
           </CommentDiv>,
