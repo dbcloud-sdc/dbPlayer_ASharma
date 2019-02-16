@@ -13,7 +13,7 @@ class Comment extends React.Component {
   }
 
   componentDidMount() {
-    const randomNum = () => Math.floor(Math.random() * 10);
+    const randomNum = () => Math.floor(Math.random() * 60) + 20;
     this.setState({
       commentCount: randomNum(),
     });
@@ -72,10 +72,10 @@ const CommentSpan = styled.span`
   color: white;
   font-size: 10px;
   position: absolute;
-  right: 77%
   top: 100%;
   margin-top: 10px;
   margin-left: 34px;
+  padding-left: 5%;
   visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
 `;
 
