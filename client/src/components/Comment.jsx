@@ -9,10 +9,11 @@ class Comment extends React.Component {
       commentCount: 0,
     };
     this.handleHoverChange = this.handleHoverChange.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
   }
 
   componentDidMount() {
-    const randomNum = () => Math.floor(Math.random() * 60) + 20;
+    const randomNum = () => Math.floor(Math.random() * 10);
     this.setState({
       commentCount: randomNum(),
     });
@@ -24,15 +25,32 @@ class Comment extends React.Component {
     });
   }
 
+  handleLeave() {
+    this.setState({
+      display: 0,
+    });
+  }
+
   render() {
     const CommentImage = () => {
       const imgArray = [];
       for (let i = 1; i < this.state.commentCount; i += 1) {
-        imgArray.push(<CommentSpan
-          key={i}
-          style={{ backgroundImage: `url(${this.props.random[i]})` }}
-          onMouseEnter={() => this.handleHoverChange(i)}
-        />);
+        imgArray.push(
+          <CommentDiv
+            key={i}
+            style={{ backgroundImage: `url(${this.props.random[i]})` }}
+            onMouseEnter={() => this.handleHoverChange(i)}
+            onMouseLeave={() => this.handleLeave()}
+            isHovered={Boolean(this.state.display) >= i}
+          >
+            <CommentSpan isHovered={Boolean(this.state.display) >= i}>
+            Cowie Island
+            </CommentSpan>
+            <NameSpan isHovered={Boolean(this.state.display) >= i}>
+            Cowie
+            </NameSpan>
+          </CommentDiv>,
+        );
       }
       return imgArray;
     };
@@ -44,11 +62,35 @@ class Comment extends React.Component {
   }
 }
 
-const CommentSpan = styled.span`
+const CommentDiv = styled.div`
   width: 22px;
   height: 22px;
   justify-content: space-between;
 `;
+
+const CommentSpan = styled.span`
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  margin-left: 34px;
+  visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
+`;
+
+const NameSpan = styled.span`
+  color: #f50;
+  font-size: 10px;
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
+  // border-left: 2px solid #f50;
+  // border-collapse: separate;
+  // border-spacing: 15px;
+`;
+
+// visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
 
 export default Comment;
 

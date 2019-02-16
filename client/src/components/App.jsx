@@ -95,7 +95,7 @@ class App extends React.Component {
                 <SoundBar sound={this.state.songs} play={this.state.playStatus} />
               </div>
               <div>
-                <Comment img={this.state.image} random={this.state.randomImage} />
+                <Comment random={this.state.randomImage} />
               </div>
             </div>
             )

@@ -13,7 +13,7 @@
     "react-dev": "webpack -d --watch",
     "seeding": "node seed.js",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch --coverage"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
