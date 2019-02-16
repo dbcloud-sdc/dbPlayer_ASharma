@@ -44,10 +44,10 @@ class Comment extends React.Component {
             isHovered={Boolean(this.state.display) >= i}
           >
             <CommentSpan isHovered={Boolean(this.state.display) >= i}>
-            Cowie Island
+              {this.props.info.comment}
             </CommentSpan>
             <NameSpan isHovered={Boolean(this.state.display) >= i}>
-            Cowie
+              {this.props.info.artistname}
             </NameSpan>
           </CommentDiv>,
         );
@@ -72,6 +72,7 @@ const CommentSpan = styled.span`
   color: white;
   font-size: 10px;
   position: absolute;
+  right: 77%
   top: 100%;
   margin-top: 10px;
   margin-left: 34px;
@@ -85,9 +86,6 @@ const NameSpan = styled.span`
   top: 100%;
   margin-top: 10px;
   visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
-  // border-left: 2px solid #f50;
-  // border-collapse: separate;
-  // border-spacing: 15px;
 `;
 
 // visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
