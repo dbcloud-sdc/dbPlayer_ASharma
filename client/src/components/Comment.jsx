@@ -75,7 +75,7 @@ const CommentSpan = styled.span`
   top: 100%;
   margin-top: 10px;
   margin-left: 34px;
-  padding-left: 5%;
+  padding-left: 7%;
   visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
 `;
 

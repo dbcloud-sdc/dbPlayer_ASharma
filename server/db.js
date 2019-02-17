@@ -51,6 +51,10 @@ const Song = sequelize.define('songplayer', {
     type: Sequelize.STRING(200),
     allowNull: false,
   },
+  username: {
+    type: Sequelize.STRING(32),
+    allowNull: false,
+  },
 });
 
 const getAllSongs = () => {
