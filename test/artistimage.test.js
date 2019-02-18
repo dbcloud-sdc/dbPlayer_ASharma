@@ -14,4 +14,12 @@ describe('ArtistImage Component', () => {
     const artistimage = shallow(<ArtistImage img={props.imgurl} />);
     expect(toJson(artistimage)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const props = {
+      imgurl: 'https://s3-us-west-1.amazonaws.com/songimages/photos/simg90.jpg',
+    };
+    const debug = shallow(<ArtistImage img={props.imgurl} debug />);
+  
+    expect(debug).toMatchSnapshot();
+  });
 });

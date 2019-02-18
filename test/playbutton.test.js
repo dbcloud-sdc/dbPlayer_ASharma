@@ -20,4 +20,9 @@ describe('Play Button Component', () => {
     const playbutton = shallow(<PlayButton />);
     expect(toJson(playbutton)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const debug = shallow(<PlayButton debug />);
+  
+    expect(debug).toMatchSnapshot();
+  });
 });

@@ -17,3 +17,5 @@ exports[`ElapsedTime Component should render ElapsedTime without throwing an err
   </button>
 </div>
 `;
+
+exports[`ElapsedTime Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;

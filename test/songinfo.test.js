@@ -15,4 +15,13 @@ describe('SongInfo Component', () => {
     const song = shallow(<SongInfo song={props.artistname} />);
     expect(toJson(song)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const props = {
+      artistname: 'Etha Crona Sr.',
+      songname: 'Qui blanditiis quas.',
+    }
+    const debug = shallow(<SongInfo song={props.artistname} debug />);
+  
+    expect(debug).toMatchSnapshot();
+  });
 });

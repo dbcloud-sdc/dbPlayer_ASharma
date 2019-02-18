@@ -12,3 +12,5 @@ exports[`SongInfo Component should render SongInfo without throwing an error 1`]
   />
 </div>
 `;
+
+exports[`SongInfo Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;

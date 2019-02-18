@@ -30,3 +30,5 @@ exports[`Play Button Component Should render correctly according to snapshot 1`]
   />
 </div>
 `;
+
+exports[`Play Button Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;

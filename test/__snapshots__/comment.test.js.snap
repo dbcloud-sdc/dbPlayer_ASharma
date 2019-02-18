@@ -8,3 +8,5 @@ exports[`Comment Component should render Comment without throwing an error 1`] =
   random="https://s3-us-west-1.amazonaws.com/songimages/photos/simg100.jpg"
 />
 `;
+
+exports[`Comment Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;

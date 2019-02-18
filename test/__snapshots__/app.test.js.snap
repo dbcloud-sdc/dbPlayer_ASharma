@@ -21,3 +21,5 @@ exports[`App Component Renders according to snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`App Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;

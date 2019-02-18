@@ -16,4 +16,14 @@ describe('Comment Component', () => {
     const songcomment = shallow(<new Comment random={props.imgurl} info={props.comment} name={props.username} />);
     expect(toJson(songcomment)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const props = {
+      imgurl: 'https://s3-us-west-1.amazonaws.com/songimages/photos/simg100.jpg',
+      username: 'Annabelle Parker',
+      comment: 'Nihil rerum possimus suscipit architecto non consequuntur provident adipisci.',
+    };
+    const debug = shallow(<new Comment random={props.imgurl} info={props.comment} name={props.username} debug />);
+  
+    expect(debug).toMatchSnapshot();
+  });
 });

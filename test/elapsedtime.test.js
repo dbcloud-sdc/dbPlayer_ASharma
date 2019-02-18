@@ -16,4 +16,13 @@ describe('ElapsedTime Component', () => {
     const elapsedtime = shallow(<ElapsedTime info={props.timelapsed} />);
     expect(toJson(elapsedtime)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const props = {
+      timelapsed: '2018-04-07 00:38:13',
+      hashtag: 'SCSI',
+    }
+    const debug = shallow(<ElapsedTime info={props.timelapsed} debug />);
+  
+    expect(debug).toMatchSnapshot();
+  });
 });
