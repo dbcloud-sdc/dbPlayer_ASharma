@@ -2,6 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
 import ElapsedTime from '../client/src/components/ElapsedTime';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
@@ -13,6 +14,6 @@ describe('Comment Component', () => {
       comment: 'Nihil rerum possimus suscipit architecto non consequuntur provident adipisci.',
     };
     const songcomment = shallow(<new Comment random={props.imgurl} info={props.comment} name={props.username} />);
-    expect(songcomment).toMatchSnapshot();
+    expect(toJson(songcomment)).toMatchSnapshot();
   });
 });

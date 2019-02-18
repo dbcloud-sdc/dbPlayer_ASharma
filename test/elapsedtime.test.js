@@ -3,6 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
 import Comment from '../client/src/components/Comment';
 import ElapsedTime from '../client/src/components/ElapsedTime';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
@@ -13,6 +14,6 @@ describe('ElapsedTime Component', () => {
       hashtag: 'SCSI',
     }
     const elapsedtime = shallow(<ElapsedTime info={props.timelapsed} />);
-    expect(elapsedtime).toMatchSnapshot();
+    expect(toJson(elapsedtime)).toMatchSnapshot();
   });
 });

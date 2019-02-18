@@ -2,6 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
 import PlayButton from '../client/src/components/PlayButton';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
@@ -17,6 +18,6 @@ describe('Play Button Component', () => {
   });
   it('Should render correctly according to snapshot', () => {
     const playbutton = shallow(<PlayButton />);
-    expect(playbutton).toMatchSnapshot();
+    expect(toJson(playbutton)).toMatchSnapshot();
   });
 });

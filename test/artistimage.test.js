@@ -2,6 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
 import ArtistImage from '../client/src/components/ArtistImage';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
@@ -11,6 +12,6 @@ describe('ArtistImage Component', () => {
       imgurl: 'https://s3-us-west-1.amazonaws.com/songimages/photos/simg90.jpg',
     };
     const artistimage = shallow(<ArtistImage img={props.imgurl} />);
-    expect(artistimage).toMatchSnapshot();
+    expect(toJson(artistimage)).toMatchSnapshot();
   });
 });

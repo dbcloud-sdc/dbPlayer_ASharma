@@ -4,6 +4,7 @@ import { configure, shallow, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from '../client/src/components/App';
 import SoundBar from '../client/src/components/SoundBar';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
@@ -19,7 +20,7 @@ describe('App Component', () => {
   });
   it('Renders according to snapshot', () => {
     const app = shallow(<App />);
-    expect(app).toMatchSnapshot();
+    expect(toJson(app)).toMatchSnapshot();
   });
 });
 

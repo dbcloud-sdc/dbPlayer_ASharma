@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Component Renders according to snapshot 1`] = `ShallowWrapper {}`;
+exports[`App Component Renders according to snapshot 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <ArtistImage
+      img={Array []}
+    />
+    <ElapsedTime
+      info={Array []}
+    />
+    <SongInfo
+      song={Array []}
+    />
+    <PlayButton
+      onToggle={[Function]}
+      play={false}
+    />
+  </div>
+</div>
+`;
