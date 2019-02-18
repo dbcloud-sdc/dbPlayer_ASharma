@@ -52,6 +52,10 @@ const Song = sequelize.define('songplayer', {
     type: Sequelize.STRING(200),
     allowNull: false,
   },
+  username: {
+    type: Sequelize.STRING(32),
+    allowNull: false,
+  },
 });
 
 
@@ -68,6 +72,7 @@ Song.sync({ force: true }).then(() => {
       songlength: faker.random.number({ min: 120, max: 620 }),
       decibel: faker.random.number({ min: 22, max: 80 }),
       comment: faker.lorem.sentence(),
+      username: faker.name.findName(),
     }).save();
     songs.push(songMaker);
   }

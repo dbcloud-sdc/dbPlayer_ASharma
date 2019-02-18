@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SongInfo Component should render SongInfo without throwing an error 1`] = `
+<div
+  className="Info-Container"
+>
+  <div
+    className="Artist-Name"
+  />
+  <span
+    className="Song-Name"
+  />
+</div>
+`;

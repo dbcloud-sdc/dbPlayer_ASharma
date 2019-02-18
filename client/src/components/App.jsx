@@ -47,6 +47,19 @@ class App extends React.Component {
     });
   }
 
+  getSongs() {
+    ajax.getAllSongs((err, data) => {
+      if (err) {
+        console.log('getSongs Failed', err);
+      } else {
+        const randomIndex = Math.floor(Math.random() * 100);
+        this.setState({
+          songs: data[randomIndex],
+        });
+      }
+    });
+  }
+
   getRandomImage() {
     ajax.getAllImages((err, data) => {
       if (err) {
@@ -89,7 +102,7 @@ class App extends React.Component {
         const name = [];
         for (let i = 0; i < 80; i += 1) {
           const randomIndex = Math.floor(Math.random() * 100);
-          name.push(data[randomIndex].artistname);
+          name.push(data[randomIndex].username);
         }
         this.setState({
           randomName: name,
@@ -97,20 +110,6 @@ class App extends React.Component {
       }
     });
   }
-
-  getSongs() {
-    ajax.getAllSongs((err, data) => {
-      if (err) {
-        console.log('getSongs Failed', err);
-      } else {
-        const randomIndex = Math.floor(Math.random() * 100);
-        this.setState({
-          songs: data[randomIndex],
-        });
-      }
-    });
-  }
-
 
   handlePlayButton() {
     this.setState({

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Component should render Comment without throwing an error 1`] = `
+<new
+  Comment={true}
+  info="Nihil rerum possimus suscipit architecto non consequuntur provident adipisci."
+  name="Annabelle Parker"
+  random="https://s3-us-west-1.amazonaws.com/songimages/photos/simg100.jpg"
+/>
+`;

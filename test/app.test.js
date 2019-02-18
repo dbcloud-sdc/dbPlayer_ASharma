@@ -1,29 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure, shallow } from 'enzyme';
+import { configure, shallow, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from '../client/src/components/App';
-import PlayButton from '../client/src/components/PlayButton';
+import SoundBar from '../client/src/components/SoundBar';
+import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
 
-// testing first test
-
-it('works', () => {
-  const wrap = shallow(
-    <App />
-  );
-  expect(wrap.text()).toEqual('<ArtistImage /><PlayButton />');
-});
-
-
-// testing play button
-
-describe('Play Button Component', () => {
-  it('simulates button click for play-button', () => {
+describe('App Component', () => {
+  it('should render App without throwing an error', () => {
+    expect(shallow(<App />).exists()).toBe(true);
+  });
+  it('works', () => {
     const wrap = shallow(
-      <PlayButton />
+      <App />,
     );
-    wrap.find('div').simulate('click');
+    expect(wrap.text()).toEqual('<ArtistImage /><ElapsedTime /><SongInfo /><PlayButton />');
+  });
+  it('Renders according to snapshot', () => {
+    const app = shallow(<App />);
+    expect(toJson(app)).toMatchSnapshot();
   });
 });
+
+
+//   describe('SoundBar Component', () => {
+//   it('should render App without throwing an error', () => {
+//     expect(shallow(<SoundBar />).exists()).toBe(true);
+//   });
+// });
