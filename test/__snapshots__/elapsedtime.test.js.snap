@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ElapsedTime Component should mount correctly 1`] = `
+<ElapsedTime
+  info="2018-04-07 00:38:13"
+>
+  <div
+    className="Time-Container"
+  >
+    <div
+      className="Elapsed-time"
+    >
+      a few seconds ago
+    </div>
+    <button
+      className="hashtag"
+      type="submit"
+    >
+      # 
+    </button>
+  </div>
+</ElapsedTime>
+`;
+
 exports[`ElapsedTime Component should render ElapsedTime without throwing an error 1`] = `
 <div
   className="Time-Container"
@@ -11,6 +33,24 @@ exports[`ElapsedTime Component should render ElapsedTime without throwing an err
   </div>
   <button
     className="hashtag"
+    type="submit"
+  >
+    # 
+  </button>
+</div>
+`;
+
+exports[`ElapsedTime Component should render correctly 1`] = `
+<div
+  class="Time-Container"
+>
+  <div
+    class="Elapsed-time"
+  >
+    a few seconds ago
+  </div>
+  <button
+    class="hashtag"
     type="submit"
   >
     # 

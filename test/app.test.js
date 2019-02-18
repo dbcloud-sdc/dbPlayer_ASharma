@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from '../client/src/components/App';
 import toJson from 'enzyme-to-json';
@@ -25,5 +25,13 @@ describe('App Component', () => {
     const debug = shallow(<App debug />);
   
     expect(toJson(debug)).toMatchSnapshot();
+  });
+  it('should mount correctly', () => {
+    const wrap = mount(<App />);
+    expect(toJson(wrap)).toMatchSnapshot();
+  });
+  it('should render correctly', () => {
+    const wrap = render(<App />);
+    expect(toJson(wrap)).toMatchSnapshot();
   });
 });
