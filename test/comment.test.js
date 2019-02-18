@@ -23,6 +23,7 @@ describe('Comment Component', () => {
   it('should mount correctly', () => {
     const songcomment = mount(<Comment random={props.imgurl} info={props.comment} name={props.username} />);
     expect(toJson(songcomment)).toMatchSnapshot();
+    songcomment.unmount();
   });
   it('should render correctly', () => {
     const songcomment = render(<Comment random={props.imgurl} info={props.comment} name={props.username} />);
