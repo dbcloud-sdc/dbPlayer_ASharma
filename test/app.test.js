@@ -24,6 +24,6 @@ describe('App Component', () => {
   it('should render correctly in "debug" mode', () => {
     const debug = shallow(<App debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });

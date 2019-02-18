@@ -22,6 +22,6 @@ describe('SongInfo Component', () => {
     }
     const debug = shallow(<SongInfo song={props.artistname} debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });

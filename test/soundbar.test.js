@@ -19,6 +19,6 @@ describe('SoundBar Component', () => {
   it('should render correctly in "debug" mode', () => {
     const debug = shallow(<SoundBar sound={props.songlength} debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });

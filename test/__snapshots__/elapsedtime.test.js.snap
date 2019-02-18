@@ -18,4 +18,20 @@ exports[`ElapsedTime Component should render ElapsedTime without throwing an err
 </div>
 `;
 
-exports[`ElapsedTime Component should render correctly in "debug" mode 1`] = `ShallowWrapper {}`;
+exports[`ElapsedTime Component should render correctly in "debug" mode 1`] = `
+<div
+  className="Time-Container"
+>
+  <div
+    className="Elapsed-time"
+  >
+    a few seconds ago
+  </div>
+  <button
+    className="hashtag"
+    type="submit"
+  >
+    # 
+  </button>
+</div>
+`;

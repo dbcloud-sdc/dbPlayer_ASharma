@@ -24,6 +24,6 @@ describe('Comment Component', () => {
     };
     const debug = shallow(<new Comment random={props.imgurl} info={props.comment} name={props.username} debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });

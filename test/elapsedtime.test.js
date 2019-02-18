@@ -23,6 +23,6 @@ describe('ElapsedTime Component', () => {
     }
     const debug = shallow(<ElapsedTime info={props.timelapsed} debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });

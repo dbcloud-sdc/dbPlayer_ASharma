@@ -20,6 +20,6 @@ describe('ArtistImage Component', () => {
     };
     const debug = shallow(<ArtistImage img={props.imgurl} debug />);
   
-    expect(debug).toMatchSnapshot();
+    expect(toJson(debug)).toMatchSnapshot();
   });
 });
