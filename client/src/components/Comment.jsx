@@ -44,6 +44,13 @@ class Comment extends React.Component {
     });
   }
 
+  handleClickChange(index) {
+    console.log(this.state.seconds);
+    this.setState({
+      seconds: index * (this.props.song.songlength / this.state.commentCount),
+    });
+  }
+
   render() {
     const CommentImage = () => {
       const imgArray = [];
@@ -58,6 +65,7 @@ class Comment extends React.Component {
             isCurrent={Boolean((i * (this.props.song.songlength / this.state.commentCount)) <= this.state.seconds
               && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds
               && this.state.display === 0)}
+            onClick={() => this.handleClickChange(i)}
           >
             <CommentSpan
               isHovered={Boolean(this.state.display === i)}
