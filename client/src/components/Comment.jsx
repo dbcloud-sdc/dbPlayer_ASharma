@@ -56,19 +56,22 @@ class Comment extends React.Component {
             onMouseLeave={() => this.handleLeave()}
             isHovered={Boolean(this.state.display === i)}
             isCurrent={Boolean((i * (this.props.song.songlength / this.state.commentCount)) <= this.state.seconds
-              && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds)}
+              && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds
+              && this.state.display === 0)}
           >
             <CommentSpan
               isHovered={Boolean(this.state.display === i)}
               isCurrent={Boolean((i * (this.props.song.songlength / this.state.commentCount)) <= this.state.seconds
-                && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds)}
+                && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds
+                && this.state.display === 0)}
             >
               {this.props.info[i]}
             </CommentSpan>
             <NameSpan
               isHovered={Boolean(this.state.display === i)}
               isCurrent={Boolean((i * (this.props.song.songlength / this.state.commentCount)) <= this.state.seconds
-                && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds)}
+                && ((i + 1) * (this.props.song.songlength / this.state.commentCount)) >= this.state.seconds
+                && this.state.display === 0)}
             >
               {this.props.name[i]}
             </NameSpan>
@@ -99,8 +102,7 @@ const CommentSpan = styled.span`
   margin-top: 10px;
   margin-left: 34px;
   padding-left: 7%;
-  // visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
-  visibility: ${props => (props.isCurrent ? 'visible' : 'hidden')}
+  visibility: ${props => (props.isHovered ? 'visible' : props.isCurrent ? 'visible' : 'hidden')}
 `;
 
 const NameSpan = styled.span`
@@ -109,8 +111,7 @@ const NameSpan = styled.span`
   position: absolute;
   top: 100%;
   margin-top: 10px;
-  // visibility: ${props => (props.isHovered ? 'visible' : 'hidden')}
-  visibility: ${props => (props.isCurrent ? 'visible' : 'hidden')}
+  visibility: ${props => (props.isHovered ? 'visible' : props.isCurrent ? 'visible' : 'hidden')}
 `;
 
 export default Comment;
