@@ -1,6 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SongInfo Component should mount correctly 1`] = `
+<SongInfo
+  song="Etha Crona Sr."
+>
+  <div
+    className="Info-Container"
+  >
+    <div
+      className="Artist-Name"
+    />
+    <span
+      className="Song-Name"
+    />
+  </div>
+</SongInfo>
+`;
+
 exports[`SongInfo Component should render SongInfo without throwing an error 1`] = `
+<div
+  className="Info-Container"
+>
+  <div
+    className="Artist-Name"
+  />
+  <span
+    className="Song-Name"
+  />
+</div>
+`;
+
+exports[`SongInfo Component should render correctly 1`] = `
+<div
+  class="Info-Container"
+>
+  <div
+    class="Artist-Name"
+  />
+  <span
+    class="Song-Name"
+  />
+</div>
+`;
+
+exports[`SongInfo Component should render correctly in "debug" mode 1`] = `
 <div
   className="Info-Container"
 >

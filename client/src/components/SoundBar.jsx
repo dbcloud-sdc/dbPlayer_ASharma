@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+
 class SoundBar extends React.Component {
   constructor(props) {
     super(props);
@@ -66,6 +67,7 @@ class SoundBar extends React.Component {
           onClick={() => { this.handleChangeTime(i); }}
         />);
         barArrayBottom.push(<BarStyleSpan
+          id={`${i}`}
           style={{ height: (this.state.randomNum[i] / 2.5) }}
           key={i}
           onMouseEnter={() => { this.handleHoverChange(i); }}

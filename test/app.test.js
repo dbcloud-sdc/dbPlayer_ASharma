@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from '../client/src/components/App';
-import SoundBar from '../client/src/components/SoundBar';
 import toJson from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
@@ -22,11 +21,16 @@ describe('App Component', () => {
     const app = shallow(<App />);
     expect(toJson(app)).toMatchSnapshot();
   });
+  it('should render correctly in "debug" mode', () => {
+    const debug = shallow(<App debug />);
+    expect(toJson(debug)).toMatchSnapshot();
+  });
+  it('should mount correctly', () => {
+    const wrap = mount(<App />);
+    expect(toJson(wrap)).toMatchSnapshot();
+  });
+  it('should render correctly', () => {
+    const wrap = render(<App />);
+    expect(toJson(wrap)).toMatchSnapshot();
+  });
 });
-
-
-//   describe('SoundBar Component', () => {
-//   it('should render App without throwing an error', () => {
-//     expect(shallow(<SoundBar />).exists()).toBe(true);
-//   });
-// });

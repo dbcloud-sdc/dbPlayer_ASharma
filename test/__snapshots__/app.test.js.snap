@@ -21,3 +21,201 @@ exports[`App Component Renders according to snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`App Component should mount correctly 1`] = `
+<App>
+  <div>
+    <div
+      className="container"
+    >
+      <ArtistImage
+        img={Array []}
+      >
+        <span
+          className="imageContainer"
+        >
+          <img
+            alt=""
+            className="image"
+          />
+        </span>
+      </ArtistImage>
+      <ElapsedTime
+        info={Array []}
+      >
+        <div
+          className="Time-Container"
+        >
+          <div
+            className="Elapsed-time"
+          >
+            a few seconds ago
+          </div>
+          <button
+            className="hashtag"
+            type="submit"
+          >
+            # 
+          </button>
+        </div>
+      </ElapsedTime>
+      <SongInfo
+        song={Array []}
+      >
+        <div
+          className="Info-Container"
+        >
+          <div
+            className="Artist-Name"
+          />
+          <span
+            className="Song-Name"
+          />
+        </div>
+      </SongInfo>
+      <PlayButton
+        onToggle={[Function]}
+        play={false}
+      >
+        <div
+          className="btnContainer"
+        >
+          <FontAwesomeIcon
+            border={false}
+            className="playBtn"
+            fixedWidth={false}
+            flip={null}
+            icon="play-circle"
+            inverse={false}
+            listItem={false}
+            mask={null}
+            onClick={[Function]}
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size={null}
+            spin={false}
+            style={
+              Object {
+                "height": "60px",
+                "width": "60px",
+              }
+            }
+            symbol={false}
+            title=""
+            transform={null}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-play-circle fa-w-16 playBtn"
+              data-icon="play-circle"
+              data-prefix="fas"
+              focusable="false"
+              onClick={[Function]}
+              role="img"
+              style={
+                Object {
+                  "height": "60px",
+                  "width": "60px",
+                }
+              }
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </FontAwesomeIcon>
+        </div>
+      </PlayButton>
+    </div>
+  </div>
+</App>
+`;
+
+exports[`App Component should render correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <span
+      class="imageContainer"
+    >
+      <img
+        alt=""
+        class="image"
+      />
+    </span>
+    <div
+      class="Time-Container"
+    >
+      <div
+        class="Elapsed-time"
+      >
+        a few seconds ago
+      </div>
+      <button
+        class="hashtag"
+        type="submit"
+      >
+        # 
+      </button>
+    </div>
+    <div
+      class="Info-Container"
+    >
+      <div
+        class="Artist-Name"
+      />
+      <span
+        class="Song-Name"
+      />
+    </div>
+    <div
+      class="btnContainer"
+    >
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-play-circle fa-w-16 playBtn"
+        data-icon="play-circle"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style="height:60px;width:60px"
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Component should render correctly in "debug" mode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <ArtistImage
+      img={Array []}
+    />
+    <ElapsedTime
+      info={Array []}
+    />
+    <SongInfo
+      song={Array []}
+    />
+    <PlayButton
+      onToggle={[Function]}
+      play={false}
+    />
+  </div>
+</div>
+`;
