@@ -23,7 +23,6 @@ describe('App Component', () => {
   });
   it('should render correctly in "debug" mode', () => {
     const debug = shallow(<App debug />);
-  
     expect(toJson(debug)).toMatchSnapshot();
   });
   it('should mount correctly', () => {

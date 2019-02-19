@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+
 class SoundBar extends React.Component {
   constructor(props) {
     super(props);

@@ -143,6 +143,8 @@ class App extends React.Component {
                   random={this.state.randomImage}
                   info={this.state.randomComment}
                   name={this.state.randomName}
+                  play={this.state.playStatus}
+                  song={this.state.songs}
                 />
               </div>
             </div>
