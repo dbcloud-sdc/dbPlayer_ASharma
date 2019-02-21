@@ -6,4 +6,4 @@ ReactDOM.render(<App />, document.getElementById('player'));
 
 // window.player = App
 
-// module.hot.accept();
+// module.hot.accept()
