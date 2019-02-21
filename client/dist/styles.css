@@ -1,11 +1,5 @@
 /* App container */
 
-/* body {
-  font: 12px/1.4 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda,Verdana, Tahoma, sans-serif;
-  color: #333;
-  display: flex;
-  justify-content: center;
-} */
 
 #player {
   position: relative;
@@ -64,15 +58,6 @@
   margin-right: 20px;
 }
 
-/* .Info-Container {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex: 1000px;
-  margin-top: 28px;
-  margin-left: 10px;
-  line-break: auto;
-} */
 
 .Artist-Name {
   background-color: rgba(0,0,0,.8);

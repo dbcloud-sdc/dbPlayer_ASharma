@@ -1,6 +1,6 @@
 import React from 'react';
 // import styled from 'styled-components';
-const {styled} = window;
+const { styled } = window;
 
 class Comment extends React.Component {
   constructor(props) {
