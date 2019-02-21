@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 const getAllImages = (callback) => {
   $.get({
-    url: 'http://localhost:8081/api/song_img',
+    url: '/api/song_img',
     success: data => callback(null, data),
     error: err => callback(err),
   });
@@ -10,7 +10,7 @@ const getAllImages = (callback) => {
 
 const getAllSongs = (callback) => {
   $.get({
-    url: 'http://localhost:8081/api/song_id',
+    url: '/api/song_id',
     success: data => callback(null, data),
     error: err => callback(err),
   });
