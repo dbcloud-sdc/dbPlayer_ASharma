@@ -3,7 +3,7 @@ const faker = require('faker');
 const { username, password } = require('./config.js');
 
 const sequelize = new Sequelize('player', username, password, {
-  host: 'localhost',
+  host: 'cowiedatabase.c3ayie6lwpmv.us-east-1.rds.amazonaws.com',
   dialect: 'mysql',
 });
 
