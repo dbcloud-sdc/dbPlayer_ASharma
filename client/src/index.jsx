@@ -4,5 +4,6 @@ import App from './components/App.jsx';
 
 ReactDOM.render(<App />, document.getElementById('player'));
 
+// window.player = App
 
 // module.hot.accept();
