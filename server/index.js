@@ -8,6 +8,8 @@ const PORT = 8081;
 
 app.use(cors());
 app.use('/song/:songId', express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 
 app.get('/song/:songId/api/song_id', (req, res) => {
   const { songId } = req.params;
@@ -23,6 +25,17 @@ app.get('/song/:songId/api/song_id', (req, res) => {
 app.get('/song/:songId/api/song_img', (req, res) => {
   const { songId } = req.params;
   db.getSongImg(songId)
+    .then((img) => {
+      res.status(200).send(img);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+app.get('/song/:songId/api/song_url', (req, res) => {
+  const { songId } = req.params;
+  db.getSongUrl(songId)
     .then((img) => {
       res.status(200).send(img);
     })

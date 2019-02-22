@@ -74,6 +74,15 @@ const getSongImg = (songid) => {
   });
 };
 
+const getSongUrl = (songid) => {
+  return Song.findAll({
+    attributes: ['songurl'],
+    where: {
+      id: songid,
+    },
+  });
+};
+
 const getAllComments = () => {
   return Song.findAll({
   });
@@ -86,5 +95,5 @@ const getSongCommentImgs = () => {
 };
 
 module.exports = {
-  getAllSongs, getSongImg, getAllComments, getSongCommentImgs,
+  getAllSongs, getSongImg, getAllComments, getSongCommentImgs, getSongUrl,
 };

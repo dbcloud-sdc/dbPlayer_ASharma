@@ -16,6 +16,14 @@ const getAllSongs = (callback) => {
   });
 };
 
+const getAllSongsUrl = (callback) => {
+  $.get({
+    url: `${window.location.pathname}api/song_url`,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
 const getAllCommentImages = (callback) => {
   $.get({
     url: `${window.location.pathname}api/song_comment_img`,
@@ -33,5 +41,5 @@ const getAllComments = (callback) => {
 };
 
 export default {
-  getAllImages, getAllSongs, getAllCommentImages, getAllComments,
+  getAllImages, getAllSongs, getAllCommentImages, getAllComments, getAllSongsUrl,
 };

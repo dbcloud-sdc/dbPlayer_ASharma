@@ -21,6 +21,7 @@ class App extends React.Component {
       randomImage: [],
       randomComment: [],
       randomName: [],
+      songsUrl: [],
       playStatus: false,
     };
     this.handlePlayButton = this.handlePlayButton.bind(this);
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.getRandomImage();
     this.getRandomComment();
     this.getRandomName();
+    this.getSongUrl();
   }
 
   getImage() {
@@ -39,7 +41,6 @@ class App extends React.Component {
       if (err) {
         console.log('getImage failed', err);
       } else {
-        // const randomIndex = Math.floor(Math.random() * 100);
         this.setState({
           image: data[0],
         });
@@ -52,9 +53,20 @@ class App extends React.Component {
       if (err) {
         console.log('getSongs Failed', err);
       } else {
-        // const randomIndex = Math.floor(Math.random() * 100);
         this.setState({
           songs: data[0],
+        });
+      }
+    });
+  }
+
+  getSongUrl() {
+    ajax.getAllSongsUrl((err, data) => {
+      if (err) {
+        console.log('getSongs Failed', err);
+      } else {
+        this.setState({
+          songsUrl: data[0],
         });
       }
     });
@@ -124,7 +136,7 @@ class App extends React.Component {
           <ArtistImage img={this.state.image} />
           <ElapsedTime info={this.state.songs} />
           <SongInfo song={this.state.songs} />
-          <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} />
+          <PlayButton onToggle={this.handlePlayButton} play={this.state.playStatus} songUrl={this.state.songsUrl} />
           {
             this.state.songs.decibel
             && this.state.songs.songlength

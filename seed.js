@@ -56,6 +56,10 @@ const Song = sequelize.define('songplayer', {
     type: Sequelize.STRING(32),
     allowNull: false,
   },
+  songurl: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+  },
 });
 
 
@@ -73,6 +77,7 @@ Song.sync({ force: true }).then(() => {
       decibel: faker.random.number({ min: 22, max: 80 }),
       comment: faker.lorem.sentence(),
       username: faker.name.findName(),
+      songurl: `https://s3.amazonaws.com/fredssong/Song${i}.mp3`,
     }).save();
     songs.push(songMaker);
   }
