@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 const getAllImages = (callback) => {
   $.get({
-    url: 'http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com/api/song_img',
+    url: `http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com${window.location.pathname}api/song_img`,
     success: data => callback(null, data),
     error: err => callback(err),
   });
@@ -10,12 +10,36 @@ const getAllImages = (callback) => {
 
 const getAllSongs = (callback) => {
   $.get({
-    url: 'http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com/api/song_id',
+    url: `http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com${window.location.pathname}api/song_id`,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
+const getAllSongsUrl = (callback) => {
+  $.get({
+    url: `http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com${window.location.pathname}api/song_url`,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
+const getAllCommentImages = (callback) => {
+  $.get({
+    url: `http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com${window.location.pathname}api/song_comment_img`,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
+const getAllComments = (callback) => {
+  $.get({
+    url: `http://cowie22-env.myqnebupcf.us-east-1.elasticbeanstalk.com${window.location.pathname}api/song_comment`,
     success: data => callback(null, data),
     error: err => callback(err),
   });
 };
 
 export default {
-  getAllImages, getAllSongs,
+  getAllImages, getAllSongs, getAllCommentImages, getAllComments, getAllSongsUrl,
 };
