@@ -57,12 +57,34 @@ const Song = sequelize.define('songplayer', {
   },
 });
 
-const getAllSongs = () => Song.findAll();
+const getAllSongs = (songid) => {
+  return Song.findAll({
+    where: {
+      id: songid,
+    },
+  });
+};
 
-const getSongImg = () => Song.findAll({
-  attributes: ['imgurl'],
-});
+const getSongImg = (songid) => {
+  return Song.findAll({
+    attributes: ['imgurl'],
+    where: {
+      id: songid,
+    },
+  });
+};
+
+const getAllComments = () => {
+  return Song.findAll({
+  });
+};
+
+const getSongCommentImgs = () => {
+  return Song.findAll({
+    attributes: ['imgurl'],
+  });
+};
 
 module.exports = {
-  getAllSongs, getSongImg,
+  getAllSongs, getSongImg, getAllComments, getSongCommentImgs,
 };
