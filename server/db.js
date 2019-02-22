@@ -4,7 +4,7 @@ const { username, password } = require('../config.js');
 
 
 const sequelize = new Sequelize('player', username, password, {
-  host: 'localhost',
+  host: 'cowiedatabase.c3ayie6lwpmv.us-east-1.rds.amazonaws.com',
   dialect: 'mysql',
 });
 
@@ -57,15 +57,11 @@ const Song = sequelize.define('songplayer', {
   },
 });
 
-const getAllSongs = () => {
-  return Song.findAll();
-};
+const getAllSongs = () => Song.findAll();
 
-const getSongImg = () => {
-  return Song.findAll({
-    attributes: ['imgurl'],
-  });
-};
+const getSongImg = () => Song.findAll({
+  attributes: ['imgurl'],
+});
 
 module.exports = {
   getAllSongs, getSongImg,

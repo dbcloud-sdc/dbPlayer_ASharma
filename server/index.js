@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-const db = require('./db.js');
 const cors = require('cors');
+const db = require('./db.js');
 
 const app = express();
-const PORT = 2222;
+const PORT = 8081;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../client/dist')));
