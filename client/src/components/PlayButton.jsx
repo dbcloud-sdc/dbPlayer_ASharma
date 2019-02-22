@@ -2,10 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PlayButton = (props) => {
-  console.log(props.songUrl.songurl);
   const controller = () => {
     const player = document.getElementById('fredness');
-    player.paused ? player.play() : player.pause();
+    if (player.paused) {
+      player.load();
+      player.play();
+    } else {
+      player.pause();
+    }
   };
   return (
     <div className="btnContainer">
@@ -13,9 +17,9 @@ const PlayButton = (props) => {
         : <FontAwesomeIcon onClick={() => { props.onToggle(); controller(); }} style={{ height: '60px', width: '60px' }} className="playBtn" icon="pause-circle" />
     }
       {
-        <video style={{ display: 'none'} } id='fredness' name="media">
-          <source src={props.songUrl.songurl} type="audio/mp3" />
-        </video>
+        <audio controls style={{ display: 'none'} } id='fredness' name="media">
+          <source id='songsrc' src={props.songUrl.songurl} type="audio/mp3" />
+        </audio>
     }
     </div>
   );
