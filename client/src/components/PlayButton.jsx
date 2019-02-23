@@ -1,24 +1,43 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PlayButton = (props) => {
-  const player = document.getElementById('fredness');
-  const controller = () => {
+class PlayButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialPlay: false,
+    };
+    this.controller = this.controller.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      initialPlay: true,
+    });
+  }
+
+  controller() {
+    const player = document.getElementById('fredness');
     player.paused ? player.play() : player.pause();
-  };
-  return (
-    <div className="btnContainer">
-      {!props.play ? <FontAwesomeIcon onClick={() => { props.onToggle(); controller(); }} style={{ height: '60px', width: '60px' }} className="playBtn" icon="play-circle" />
-        : <FontAwesomeIcon onClick={() => { props.onToggle(); controller(); }} style={{ height: '60px', width: '60px' }} className="playBtn" icon="pause-circle" />
+  }
+
+  render() {
+    return (
+      <div className="btnContainer">
+        {!this.props.play ? <FontAwesomeIcon onClick={() => { this.props.onToggle(); this.controller(); }} style={{ height: '60px', width: '60px' }} className="playBtn" icon="play-circle" />
+          : <FontAwesomeIcon onClick={() => { this.props.onToggle(); this.controller(); }} style={{ height: '60px', width: '60px' }} className="playBtn" icon="pause-circle" />
     }
-      {props.songUrl.songurl &&
-        <audio controls style={{ display: 'none'} } id='fredness' name="media">
-          <source id='songsrc' src={props.songUrl.songurl} type="audio/mp3" />
+        {this.props.songUrl.songurl && this.state.initialPlay
+        && (
+        <audio controls style={{ display: 'none'} } id="fredness" name="media">
+          <source id="songsrc" src={this.props.songUrl.songurl} type="audio/mp3" />
         </audio>
+        )
     }
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 
 export default PlayButton;
