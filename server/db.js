@@ -55,6 +55,14 @@ const Song = sequelize.define('songplayer', {
     type: Sequelize.STRING(32),
     allowNull: false,
   },
+  songurl: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+  },
+  commentimage: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+  },
 });
 
 const getAllSongs = (songid) => {
@@ -90,7 +98,7 @@ const getAllComments = () => {
 
 const getSongCommentImgs = () => {
   return Song.findAll({
-    attributes: ['imgurl'],
+    attributes: ['commentimage'],
   });
 };
 

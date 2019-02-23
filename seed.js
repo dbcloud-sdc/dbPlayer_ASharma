@@ -60,6 +60,10 @@ const Song = sequelize.define('songplayer', {
     type: Sequelize.STRING(100),
     allowNull: false,
   },
+  commentimage: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+  },
 });
 
 
@@ -78,6 +82,7 @@ Song.sync({ force: true }).then(() => {
       comment: faker.lorem.sentence(),
       username: faker.name.findName(),
       songurl: `https://s3.amazonaws.com/fredssong/Song${i}.mp3`,
+      commentimage: `https://s3.amazonaws.com/commentimages/user${i}.jpg`,
     }).save();
     songs.push(songMaker);
   }
