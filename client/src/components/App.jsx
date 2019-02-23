@@ -23,6 +23,7 @@ class App extends React.Component {
       randomName: [],
       songsUrl: [],
       playStatus: false,
+      // seconds: 0,
     };
     this.handlePlayButton = this.handlePlayButton.bind(this);
   }
@@ -34,7 +35,25 @@ class App extends React.Component {
     this.getRandomComment();
     this.getRandomName();
     this.getSongUrl();
+    // this.timerID = setInterval(
+    //   () => this.tick(),
+    //   1000,
+    // );
   }
+
+  // tick() {
+  //   if (this.state.playStatus && this.state.seconds < this.state.songs.songlength) {
+  //     this.setState({
+  //       seconds: this.state.seconds + 1,
+  //     });
+  //   }
+  // }
+
+  // handleChangeTime(index) {
+  //   this.setState({
+  //     seconds: ((index * this.state.songs.songlength) / (273)),
+  //   });
+  // }
 
   getImage() {
     ajax.getAllImages((err, data) => {
@@ -148,6 +167,7 @@ class App extends React.Component {
                 <SoundBar
                   sound={this.state.songs}
                   play={this.state.playStatus}
+                  // seconds={this.state.seconds}
                 />
               </div>
               <div>
@@ -157,6 +177,7 @@ class App extends React.Component {
                   name={this.state.randomName}
                   play={this.state.playStatus}
                   song={this.state.songs}
+                  // seconds={this.state.seconds}
                 />
               </div>
             </div>
