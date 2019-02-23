@@ -17,7 +17,11 @@
 
 ## Usage
 
-> Some usage instructions
+npm install
+npm run seeding
+npm run react-dev
+npm run server
+
 
 ## Requirements
 
