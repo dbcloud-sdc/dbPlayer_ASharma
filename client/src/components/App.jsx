@@ -41,6 +41,9 @@ class App extends React.Component {
       if (err) {
         console.log('getImage failed', err);
       } else {
+        console.log('getIMAGE data');
+        console.log(data);
+        console.log(data[0]);
         this.setState({
           image: data[0],
         });
@@ -53,6 +56,9 @@ class App extends React.Component {
       if (err) {
         console.log('getSongs Failed', err);
       } else {
+        console.log('get songs data');
+
+        console.log(data);
         this.setState({
           songs: data[0],
         });
@@ -65,6 +71,9 @@ class App extends React.Component {
       if (err) {
         console.log('getSongs Failed', err);
       } else {
+        console.log('get songs url');
+
+        console.log(data);
         this.setState({
           songsUrl: data[0],
         });
@@ -77,6 +86,9 @@ class App extends React.Component {
       if (err) {
         console.log('getRandomImage failed', err);
       } else {
+        console.log('get random image');
+
+        console.log(data);
         const img = [];
         for (let i = 0; i < 80; i += 1) {
           const randomIndex = Math.floor(Math.random() * 100);
@@ -94,6 +106,9 @@ class App extends React.Component {
       if (err) {
         console.log('getRandomSongs Failed', err);
       } else {
+        console.log('get random comment');
+
+        console.log(data);
         const comment = [];
         for (let i = 0; i < 80; i += 1) {
           const randomIndex = Math.floor(Math.random() * 100);
@@ -111,6 +126,9 @@ class App extends React.Component {
       if (err) {
         console.log('getRandomSongs Failed', err);
       } else {
+        console.log('get random name');
+
+        console.log(data);
         const name = [];
         for (let i = 0; i < 80; i += 1) {
           const randomIndex = Math.floor(Math.random() * 100);
@@ -143,23 +161,23 @@ class App extends React.Component {
             && this.state.image.imgurl
             && this.state.randomImage
             && (
-            <div>
-              <div className="soundbar">
-                <SoundBar
-                  sound={this.state.songs}
-                  play={this.state.playStatus}
-                />
-              </div>
               <div>
-                <Comment
-                  random={this.state.randomImage}
-                  info={this.state.randomComment}
-                  name={this.state.randomName}
-                  play={this.state.playStatus}
-                  song={this.state.songs}
-                />
+                <div className="soundbar">
+                  <SoundBar
+                    sound={this.state.songs}
+                    play={this.state.playStatus}
+                  />
+                </div>
+                <div>
+                  <Comment
+                    random={this.state.randomImage}
+                    info={this.state.randomComment}
+                    name={this.state.randomName}
+                    play={this.state.playStatus}
+                    song={this.state.songs}
+                  />
+                </div>
               </div>
-            </div>
             )
           }
         </div>
