@@ -4,7 +4,7 @@ const { username, password } = require('../config.js');
 
 
 const sequelize = new Sequelize('player', username, password, {
-  host: 'cowiedatabase.c3ayie6lwpmv.us-east-1.rds.amazonaws.com',
+  host: 'localhost',
   dialect: 'mysql',
 });
 
@@ -64,44 +64,49 @@ const Song = sequelize.define('songplayer', {
     allowNull: false,
   },
 });
+// get requests
 
-const getAllSongs = (songid) => {
-  return Song.findAll({
-    where: {
-      id: songid,
-    },
-  });
-};
+const getAllSongs = songid => Song.findAll({
+  where: {
+    id: songid,
+  },
+});
 
-const getSongImg = (songid) => {
-  return Song.findAll({
-    attributes: ['imgurl'],
-    where: {
-      id: songid,
-    },
-  });
-};
+const getSongImg = songid => Song.findAll({
+  attributes: ['imgurl'],
+  where: {
+    id: songid,
+  },
+});
 
-const getSongUrl = (songid) => {
-  return Song.findAll({
-    attributes: ['songurl'],
-    where: {
-      id: songid,
-    },
-  });
-};
+const getSongUrl = songid => Song.findAll({
+  attributes: ['songurl'],
+  where: {
+    id: songid,
+  },
+});
 
-const getAllComments = () => {
-  return Song.findAll({
-  });
-};
+const getAllComments = () => Song.findAll({
+});
 
-const getSongCommentImgs = () => {
-  return Song.findAll({
-    attributes: ['commentimage'],
-  });
-};
+const getSongCommentImgs = () => Song.findAll({
+  attributes: ['commentimage'],
+});
+
+// // patch
+
+// const modifySong = (informationToUpdate, songid) => Song.findAll({
+//   informationToUpdate,
+//   where: {
+//     id: songid,
+//   },
+// });
+
+// // post
+
+
+//
 
 module.exports = {
-  getAllSongs, getSongImg, getAllComments, getSongCommentImgs, getSongUrl,
+  Song, getAllSongs, getSongImg, getAllComments, getSongCommentImgs, getSongUrl,
 };
