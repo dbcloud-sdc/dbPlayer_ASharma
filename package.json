@@ -22,7 +22,11 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bluebird": "^3.5.3",
     "cors": "^2.8.5",
+<<<<<<< HEAD
     "csv-write-stream": "^2.0.0",
+=======
+    "csvdata": "^1.7.0",
+>>>>>>> a580f9d5674f24fda6009294f878195314102bf8
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
