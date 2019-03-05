@@ -1,5 +1,8 @@
-// seed
-// define headers
+//NO LIONGER IN USE
+
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
 
 const faker = require('faker');
 const moment = require("moment");
@@ -10,7 +13,7 @@ const { Writeable, Readable } = require('stream');
 class ReadSongs extends Readable {
   constructor(options) {
     super(options);
-    this.goal = 10 * 1000 * 1000;
+    this.goal = 1e3;
     this.rowsgenerated = 0;
     this.progressBarLength = 25;
     this.startTime = moment();
@@ -21,17 +24,23 @@ class ReadSongs extends Readable {
       this.push(null);
     } else {
       let container = '';
-      for (let i = 0; i < 1000; i++) {
+      for (let i = 0; i < 500; i++) {
         const songname = faker.lorem.sentence(2); // string
         const artistname = faker.name.findName(); // String
-        const imgurl = faker.image.imageUrl(); // string
+        const imgurl = Math.floor(Math.random() * 200) + 1; // string
+        // const imgurl = faker.image.imageUrl(); // string
         const hashtag = faker.random.word();
-        const timeelapsed = faker.date.past();
+        // const timeelapsed = faker.date.past();
+
+        const timeelapsed = getRandomIntInclusive(1543846091489, 1551730028863);
         const start = 0;
-        const songlength = faker.random.number({ min: 120, max: 620 });
-        const decibel = faker.random.number({ min: 62, max: 80 });
-        const songurl = 'songurl'; // aws string link
-        container += `${this.rowsgenerated},${songname},${artistname},${imgurl},${hashtag},${timeelapsed},${start},${songlength},${decibel},${songurl}/n`;
+        // const songlength = faker.random.number({ min: 120, max: 620 });
+        const songlength = getRandomIntInclusive(120, 620);
+        // const decibel = faker.random.number({ min: 62, max: 80 });
+        const decibel = getRandomIntInclusive(62, 80);
+        const songurl = 1; // aws string link
+
+        container += `${this.rowsgenerated},${songname},${artistname},${imgurl},${hashtag},${timeelapsed},${start},${songlength},${decibel},${songurl}\n`;
         this.rowsgenerated++;
       }
       this.push(container);
@@ -68,9 +77,11 @@ class ReadSongs extends Readable {
 }
 
 
-var writestream = fs.createWriteStream('songs.csv');
+
+var songStream = fs.createWriteStream('test.csv');
+
 var readstream = new ReadSongs();
-readstream.pipe(writestream);
+readstream.pipe(songStream);
 
 
 
