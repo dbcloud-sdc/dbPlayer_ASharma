@@ -5,18 +5,19 @@
  *   https://github.com/reactorcore/eslint-config-hackreactor
  */
 
-// module.exports = {
-//   extends: 'airbnb',
-//   "env": {
-//     "browser": true,
-//     "node": true
-//   },
-//   "plugins": [
-//     "react"
-//   ],
-//   "rules": {
-//     "react/prop-types": 0,
-//     "react/destructuring-assignment": 0
-//   }
-// };
+module.exports = {
+  // extends: 'airbnb',
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  // "plugins": [
+  //   "react"
+  // ],
+  // "rules": {
+  //   "react/prop-types": 0,
+  //   "react/destructuring-assignment": 0
+  // }
+};
 
