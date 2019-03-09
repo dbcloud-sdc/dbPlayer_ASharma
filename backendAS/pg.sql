@@ -1,4 +1,4 @@
--- TEST
+-- FOR TEST PURPOSES ONLY
 DROP TABLE if exists testsong;
 DROP TABLE if exists testcomment;
 
