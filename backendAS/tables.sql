@@ -5,7 +5,7 @@ create database player;
 
 create table songcomment(
   id int,
-  songid int,
+  songid references song,
   commentimage int, 
   comment varchar(120),
   commenttime int,
@@ -28,6 +28,8 @@ create table song(
   decibel int, 
   songurl int
 );
+
+
 
 
 -- shape
