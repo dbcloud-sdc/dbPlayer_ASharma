@@ -123,3 +123,5 @@ fs.unlink('songs.csv', (err) => {
 
 var readstream = new ReadComments();
 readstream.pipe(writestream);
+
+// "songid" FOREIGN KEY (songid) REFERENCES song(id) ON DELETE CASCADE
