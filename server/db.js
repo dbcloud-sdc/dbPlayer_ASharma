@@ -1,11 +1,12 @@
-const { Pool, Client } = require('pg');
+const { Pool } = require('pg');
+import { user, password } from './config'
 
 const pool = new Pool({
 
-  user: 'moo',
+  user: user,
   host: '',
   database: 'player',
-  password: '',
+  password: password,
   port: 5432
 
 });
