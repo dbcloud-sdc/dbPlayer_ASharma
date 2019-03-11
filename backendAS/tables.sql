@@ -3,35 +3,38 @@ create database player;
 
 \connect player
 
-create table songcomment(
-  id int,
-  songid references song,
-  commentimage int, 
-  comment varchar(120),
-  commenttime int,
-  username varchar(80)
+
+create table song(
+  id int serial primary key,
+  songname varchar(80) not null,
+  artistname varchar(80) not null,
+  aimgurl int not null,
+  hashtag varchar(80) not null,
+  timeelapsed bigserial not null,
+  thelength int not null,
+  decibel int not null, 
+  songurl int not null
 );
+
+create table songcomment(
+  id int serial primary key,
+  songid references song(id),
+  commentimage int not null, 
+  comment varchar(120) not null,
+  commenttime int not null,
+  username varchar(80) not null
+);
+
+create index songid_song_comment on songcomment(songid);
+create index id_song on song(id);
+ALTER TABLE songcomment ADD FOREIGN KEY(songid) REFERENCES song (id) ON DELETE CASCADE;
 
 -- shape
 -- container += `${this.commentsGenerated},
 -- ${songid},${commentimage},${comment},
 -- ${commenttime},${username}\n`;
 
-create table song(
-  id int,
-  songname varchar(80),
-  artistname varchar(80),
-  aimgurl int,
-  hashtag varchar(80),
-  timeelapsed bigserial,
-  thelength int,
-  decibel int, 
-  songurl int
-);
-
-
-
-
+ 
 -- shape
     -- songRow += `${this.songRowsGenerated},
     -- ${songname},${artistname},

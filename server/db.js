@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-import { user, password } from './config'
+const { user, password } = require('./config');
 
 const pool = new Pool({
 
