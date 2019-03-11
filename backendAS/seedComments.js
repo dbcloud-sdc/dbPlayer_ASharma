@@ -54,7 +54,7 @@ class ReadComments extends Readable {
     const songname = faker.lorem.sentence(2); // string
     const artistname = faker.name.findName(); // String
     const imgurl = Math.floor(Math.random() * 200) + 1; // string
-    const hashtag = faker.random.word();
+    const hashtag = faker.lorem.word();
     const timeelapsed = getRandomIntInclusive(1543846091489, 1551730028863);
     const decibel = getRandomIntInclusive(62, 80);
     const songurl = 1; // aws string link
@@ -100,6 +100,14 @@ class ReadComments extends Readable {
 }
 
 
+// var writestream = fs.createWriteStream('testcomments.csv');
+// fs.writeFile('test.csv', '', (err) => {
+//   if (err) {
+//     throw err;
+//   }
+//   console.log('test csv created')
+// });
+
 var writestream = fs.createWriteStream('comments.csv');
 fs.unlink('songs.csv', (err) => {
   if (err) {
@@ -115,3 +123,5 @@ fs.unlink('songs.csv', (err) => {
 
 var readstream = new ReadComments();
 readstream.pipe(writestream);
+
+// "songid" FOREIGN KEY (songid) REFERENCES song(id) ON DELETE CASCADE

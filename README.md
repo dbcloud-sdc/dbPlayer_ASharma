@@ -206,6 +206,9 @@ Returns the `{ id }` deleted from the database.
   * **Code:** 400 Bad Request error
   * **Content:** `{ error : "Bad Request error" }`
 
+**Server Config**
+   * `database username, password` create a config.js file in server/ 
+
 
 <hr>
 

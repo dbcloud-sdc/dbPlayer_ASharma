@@ -1,12 +1,27 @@
-import $ from 'jquery';
+const $ = require('jquery');
 
-const getAllImages = (callback) => {
-  $.get({
-    url: `${window.location.pathname}api/song_img`,
-    success: data => callback(null, data),
-    error: err => callback(err),
-  });
-};
+
+jQuery.each(["put", "delete"], function (i, method) {
+  jQuery[method] = function (url, data, callback, type) {
+    if (jQuery.isFunction(data)) {
+      type = type || callback;
+      callback = data;
+      data = undefined;
+    }
+
+    return jQuery.ajax({
+      url: url,
+      type: method,
+      dataType: type,
+      data: data,
+      success: callback
+    });
+  };
+});
+
+//----------------------------------------------------//
+//Songs Operations
+//----------------------------------------------------//
 
 const getAllSongs = (callback) => {
   $.get({
@@ -16,30 +31,121 @@ const getAllSongs = (callback) => {
   });
 };
 
-const getAllSongsUrl = (callback) => {
-  $.get({
-    url: `${window.location.pathname}api/song_url`,
+const createASong = (dataobj, callback) => {
+  $.post({
+    url: `${window.location.pathname}api/song_id`,
+    data: dataobj,
     success: data => callback(null, data),
     error: err => callback(err),
   });
 };
 
-const getAllCommentImages = (callback) => {
-  $.get({
-    url: `${window.location.pathname}api/song_comment_img`,
+const deleteASong = (callback) => {
+  $.delete(
+    {
+      url: `${window.location.pathname}api/song_id`,
+      success: data => callback(null, data),
+      error: err => callback(err),
+    }
+  )
+}
+
+const updateASong = (dataobj, callback) => {
+  $.patch({
+    url: `${window.location.pathname}api/song_id`,
+    data: dataobj,
     success: data => callback(null, data),
-    error: err => callback(err),
-  });
-};
+    error: err => callback(err)
+  })
+}
+//----------------------------------------------------//
+//Comments Operations
+//----------------------------------------------------//
 
 const getAllComments = (callback) => {
   $.get({
-    url: `${window.location.pathname}api/song_comment`,
+    url: `${window.location.pathname}api/song_comments`,
     success: data => callback(null, data),
     error: err => callback(err),
   });
 };
 
-export default {
-  getAllImages, getAllSongs, getAllCommentImages, getAllComments, getAllSongsUrl,
+
+const createAComment = (dataobj, callback) => {
+  $.post({
+    url: `${window.location.pathname}api/song_comments`,
+    data: dataobj,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
 };
+
+const deleteAComment = (callback) => {
+  $.delete({
+    url: `${window.location.pathname}api/song_comments`,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
+const updateAComment = (dataobj, callback) => {
+  $.patch({
+    url: `${window.location.pathname}api/song_comments`,
+    data: dataobj,
+    success: data => callback(null, data),
+    error: err => callback(err),
+  });
+};
+
+module.exports = {
+  getAllSongs, getAllComments, updateAComment, deleteAComment, createAComment, updateASong, deleteASong, createASong
+};
+
+
+
+
+
+//original 
+// const getAllImages = (callback) => {
+//   $.get({
+//     url: `${window.location.pathname}api/song_img`,
+//     success: data => callback(null, data),
+//     error: err => callback(err),
+//   });
+// };
+
+// const getAllSongs = (callback) => {
+//   $.get({
+//     url: `${window.location.pathname}api/song_id`,
+//     success: data => callback(null, data),
+//     error: err => callback(err),
+//   });
+// };
+
+// const getAllSongsUrl = (callback) => {
+//   $.get({
+//     url: `${window.location.pathname}api/song_url`,
+//     success: data => callback(null, data),
+//     error: err => callback(err),
+//   });
+// };
+
+// const getAllCommentImages = (callback) => {
+//   $.get({
+//     url: `${window.location.pathname}api/song_comment_img`,
+//     success: data => callback(null, data),
+//     error: err => callback(err),
+//   });
+// };
+
+// const getAllComments = (callback) => {
+//   $.get({
+//     url: `${window.location.pathname}api/song_comment`,
+//     success: data => callback(null, data),
+//     error: err => callback(err),
+//   });
+// };
+
+// export default {
+//   getAllImages, getAllSongs, getAllCommentImages, getAllComments, getAllSongsUrl,
+// };
