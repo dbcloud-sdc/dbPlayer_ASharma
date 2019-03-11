@@ -18,32 +18,6 @@ app.use('/song/:songId', express.static(path.join(__dirname, 'dist')));
 //  querySong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
 
 
-app.route('/api/v0/song')
-  // create song
-  .post()
-  // read list of songs
-  .get()
-
-
-app.route('/api/v0/song/:songId')
-  // read single song
-  .get()
-  // update song
-  .put()
-  // delete song
-  .delete()
-
-app.route('/api/v0/song/:songId/comment')
-  // create comment for song :songId
-  .post()
-  // read comments for song :songId
-  .get()
-
-app.route('/api/v0/song/:songId/comment/:commentId')
-  // update a single comment
-  .put()
-  // delete a single comment
-  .delete()
 
 
 
@@ -165,3 +139,32 @@ app.route('/song/:songId/api/song_comment')
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
+
+
+
+// app.route('/api/v0/song')
+//   // create song
+//   .post()
+//   // read list of songs
+//   .get()
+
+
+// app.route('/api/v0/song/:songId')
+//   // read single song
+//   .get()
+//   // update song
+//   .put()
+//   // delete song
+//   .delete()
+
+// app.route('/api/v0/song/:songId/comment')
+//   // create comment for song :songId
+//   .post()
+//   // read comments for song :songId
+//   .get()
+
+// app.route('/api/v0/song/:songId/comment/:commentId')
+//   // update a single comment
+//   .put()
+//   // delete a single comment
+//   .delete()
