@@ -21,3 +21,7 @@ coverage
 build/
 bundle.js
 config.js
+
+server/newrelic.js
+**/newrelic.js
+
