@@ -154,6 +154,7 @@ const readComments = (songid) => {
     })
     .then(resp => {
       client.release();
+
       return resp.rows;
     })
     .catch(err => {
