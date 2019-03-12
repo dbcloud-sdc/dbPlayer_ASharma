@@ -87,7 +87,7 @@ const updateSong = (songdata) => {
   const { id, songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl } = songdata;
 
   return new Promise((resolve, reject) => {
-    const query = 'update song set (songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) = ($2, $3, $4, $5, $6, $7, $8) where id = $1';
+    const query = 'update song set (songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) = ($2, $3, $4, $5, $6, $7, $8, $9) where id = $1';
     var updateIt = async function () {
       const client = await pool.connect();
       try {
@@ -113,7 +113,7 @@ const createComment = (commentdata) => {
       const client = await pool.connect();
       try {
         const resp = await client.query(query, [songid, commentimage, comment, commenttime, username]);
-        console.log(resp)
+        //console.log(resp)
         resolve(resp);
       } finally {
         client.release();
@@ -129,7 +129,7 @@ const createComment = (commentdata) => {
 
 const deleteComment = (commentid) => {
   const { id } = commentid
-  console.log(id)
+  //console.log(id)
   return new Promise((resolve, reject) => {
     const query = "delete from songcomment where id = $1";
     const commid = [id];

@@ -1,50 +1,20 @@
+require('newrelic');
+
 const express = require('express');
-const path = require('path');
 const db = require('./db');
-const cors = require('cors');
-var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
 const app = express();
-app.use(morgan());
 // use the body parser middleware to put the application/json post bodies onto req.body
 app.use(bodyParser.json());
 
 const port = 3002;
 
-app.use(cors());
-app.use('/song/:songId', express.static(path.join(__dirname, 'dist')));
+//get rid of morgan  - slow
+//app.use(cors());
+//app.use('/song/:songId', express.static(path.join(__dirname, 'dist')));
 
 //  querySong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
-
-
-app.route('/api/v0/song')
-  // create song
-  .post()
-  // read list of songs
-  .get()
-
-
-app.route('/api/v0/song/:songId')
-  // read single song
-  .get()
-  // update song
-  .put()
-  // delete song
-  .delete()
-
-app.route('/api/v0/song/:songId/comment')
-  // create comment for song :songId
-  .post()
-  // read comments for song :songId
-  .get()
-
-app.route('/api/v0/song/:songId/comment/:commentId')
-  // update a single comment
-  .put()
-  // delete a single comment
-  .delete()
-
 
 
 //deal with a song
@@ -64,8 +34,8 @@ app.route('/song/:songId/api/song_id')
   })
   //create a song
   .post((req, res) => {
-    console.log(req.body);
-    console.log(typeof req.body);
+    //console.log(req.body);
+    //console.log(typeof req.body);
     db.createSong(req.body)
       .then(rows => {
         res.statusCode = 201;
@@ -109,7 +79,7 @@ app.route('/song/:songId/api/song_id')
 app.route('/song/:songId/api/song_comment')
   //get all comments
   .get((req, res) => {
-    console.log(req.params.songId)
+    //console.log(req.params.songId)
     db.readComments(req.params.songId)
       .then(rows => {
         res.statusCode = 200;
