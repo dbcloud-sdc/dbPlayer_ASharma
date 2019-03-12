@@ -4,11 +4,10 @@ const { user, password } = require('./config.js');
 const pool = new Pool({
 
   user: user,
-  host: '',
+  host: process.env.DB_HOST || '',
   database: 'player',
   password: password,
-  port: 5432
-
+  port: process.env.DB_PORT || 5432
 });
 
 pool.on('error', (err, client) => {
