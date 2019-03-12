@@ -21,7 +21,7 @@ const port = 3002;
 app.route('/song/:songId/api/song_id')
   //get a particular song
   .get((req, res) => {
-    db.querySong(req.params.songId)
+    db.readASong(req.params.songId)
       .then(rows => {
         res.statusCode = 200;
         res.send(rows);

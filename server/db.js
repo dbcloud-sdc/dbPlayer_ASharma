@@ -1,11 +1,12 @@
-const { Pool, Client } = require('pg');
+const { Pool } = require('pg');
+const { user, password } = require('./config.js');
 
 const pool = new Pool({
 
-  user: 'moo',
+  user: user,
   host: '',
   database: 'player',
-  password: '',
+  password: password,
   port: 5432
 
 });
@@ -15,182 +16,152 @@ pool.on('error', (err, client) => {
   process.exit(-1)
 })
 
-const querySong = (songid) => {
-  return new Promise((resolve, reject) => {
-    const query = 'SELECT * from song where id = $1';
-    const params = [songid];
-    var runQuery = async function () {
-      const client = await pool.connect(); //return a connection 
-      try {
-        const res = await client.query(query, params); //setting res = to result of client.quert
-        resolve(res.rows);
-      } finally {
-        client.release();
-      }
-    };
-    runQuery()
-      .catch(e => {
-        reject(e.stack);
-      });
-  });
-};
 
+
+const readASong = (songid) => {
+  const query = 'SELECT * from song where id = $1';
+  const params = [songid];
+  return pool.connect()
+    .then(client => {
+      return client.query(query, params)
+    })
+    .then(res => {
+      client.release();
+      return res.rows;
+    })
+    .catch(e => {
+      client.release()
+      return e.stack;
+    });
+};
 
 const createSong = (songdata) => {
   // destructure the songdata into its fields
   const { songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl } = songdata;
-
-  return new Promise((resolve, reject) => {
-    const query = 'insert into song(songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) values ($1, $2, $3, $4, $5, $6, $7, $8) returning id';
-    var insertSong = async function () {
-      const client = await pool.connect();
-      try {
-        // make the query using all the songdata fields
-        const res = await client.query(query, [songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl]);
-        resolve(res);
-      }
-      finally {
-        client.release();
-      }
-    }
-    insertSong()
-      .catch(err => {
-        reject(err.stack);
-      })
-
-  })
+  const query = 'insert into song(songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) values ($1, $2, $3, $4, $5, $6, $7, $8) returning id';
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl])
+    })
+    .then(res => {
+      client.release()
+      return res.rows;
+    })
+    .catch(err => {
+      client.release();
+      return err.stack;
+    })
 }
 
 //cascade delete should handle the associated records deletion
 const deleteSong = (songid) => {
-  return new Promise((resolve, reject) => {
-    const query = 'delete from song where id = $1';
-    const songidparam = [songid];
-    var deleteIt = async function () {
-      const client = await pool.connect();
-      try {
-        const resp = await client.query(query, songidparam);
-        resolve(resp);
-      } finally {
-        client.release();
-      }
-    }
-    deleteIt()
-      .catch(e => {
-        reject(e.stack)
-      })
-  })
+  const query = 'delete from song where id = $1';
+  const songidparam = [songid];
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [songid])
+    })
+    .then(res => {
+      client.release();
+      return res.rows;
+    })
+    .catch(e => {
+      client.release();
+      return e.stack;
+    })
 }
+
 
 const updateSong = (songdata) => {
   // destructure song
   const { id, songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl } = songdata;
-
-  return new Promise((resolve, reject) => {
-    const query = 'update song set (songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) = ($2, $3, $4, $5, $6, $7, $8, $9) where id = $1';
-    var updateIt = async function () {
-      const client = await pool.connect();
-      try {
-        const resp = await client.query(query, [id, songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl]);
-        resolve(resp);
-      } finally {
-        client.release();
-      }
-    }
-    updateIt()
-      .catch(e => {
-        reject(e.stack)
-      })
-  })
+  const query = 'update song set (songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl) = ($2, $3, $4, $5, $6, $7, $8, $9) where id = $1';
+  return pool.connect()
+    .then(client => {
+      client.query(query, [id, songname, artistname, aimgurl, hashtag, timeelapsed, thelength, decibel, songurl]);
+    })
+    .then(res => {
+      client.release();
+      return res.rows;
+    })
+    .catch(e => {
+      client.release();
+      return e.stack
+    })
 }
 
 
 const createComment = (commentdata) => {
   const { songid, commentimage, comment, commenttime, username } = commentdata;
-  return new Promise((resolve, reject) => {
-    const query = "insert into songcomment (songid, commentimage, comment, commenttime, username) values ($1, $2, $3, $4, $5) returning id";
-    var insertComment = async function () {
-      const client = await pool.connect();
-      try {
-        const resp = await client.query(query, [songid, commentimage, comment, commenttime, username]);
-        //console.log(resp)
-        resolve(resp);
-      } finally {
-        client.release();
-      }
-    }
-    insertComment()
-      .catch(e => {
-        reject(e.stack)
-      })
-  })
+  const query = "insert into songcomment (songid, commentimage, comment, commenttime, username) values ($1, $2, $3, $4, $5) returning id";
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [songid, commentimage, comment, commenttime, username])
+    })
+    .then(resp => {
+      client.release();
+      return resp.rows;
+    })
+    //console.log(resp)
+
+    .catch(e => {
+      return e.stack
+    })
 }
+
 
 
 const deleteComment = (commentid) => {
   const { id } = commentid
   //console.log(id)
-  return new Promise((resolve, reject) => {
-    const query = "delete from songcomment where id = $1";
-    const commid = [id];
-    const deleteIt = async function () {
-      const client = await pool.connect();
-      try {
-        const resp = await client.query(query, commid);
-        resolve(resp);
-      } finally {
-        client.release();
-      }
-    }
-    deleteIt()
-      .catch(e => {
-        reject(e.stack);
-      })
+  const query = "delete from songcomment where id = $1";
+  const commid = [id];
+  return pool.connect()
+    .then(client => {
+      return client.query(query, commid)
+    })
+    .then(resp => {
+      client.release();
+      return resp.rows
+    })
+    .catch(e => {
+      client.release();
 
-  })
+      return e.stack;
+    })
 }
-
 const updateComment = (commentdata) => {
   var { id, songid, commentimage, comment, commenttime, username } = commentdata;
-  return new Promise((resolve, reject) => {
-    const query = 'update songcomment set (songid, commentimage, comment, commenttime, username) = ($2, $3, $4, $5, $6) where id = $1';
-    var updateIt = async function () {
-      const client = await pool.connect();
-      try {
-        const resp = await client.query(query, [id, songid, commentimage, comment, commenttime, username]);
-        resolve(resp);
-      } finally {
-        client.release();
-      }
-    }
-    updateIt()
-      .catch(err => {
-        reject(err.stack);
-      })
-  })
+  const query = 'update songcomment set (songid, commentimage, comment, commenttime, username) = ($2, $3, $4, $5, $6) where id = $1';
+  return pool.connect()
+    .then(client => {
+      client.release();
+      return client.query(query, [id, songid, commentimage, comment, commenttime, username])
+    })
+    .catch(err => {
+      client.release();
+      return err.stack;
+    })
 }
 
-const readComments = (songid) => {
-  return new Promise((resolve, reject) => {
-    const query = "select * from songcomment where songid = $1"
-    const songparam = [songid];
-    var readAll = async function () {
-      const client = await pool.connect();
-      try {
-        const respo = await client.query(query, songparam);
-        resolve(respo)
-      } finally {
-        client.release();
-      }
-    }
-    readAll()
-      .catch(err => {
-        reject(err.stack)
-      })
 
-  })
+const readComments = (songid) => {
+  const query = "select * from songcomment where songid = $1"
+  const songparam = [songid];
+  return pool.connect()
+    .then(client => {
+      return client.query(query, songparam)
+    })
+    .then(resp => {
+      client.release();
+      return resp.rows;
+    })
+    .catch(err => {
+      client.release()
+      return err.stack;
+    })
 }
 
 module.exports = {
-  querySong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
+  readASong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
 }
