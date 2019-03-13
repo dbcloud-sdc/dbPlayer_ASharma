@@ -5,3 +5,4 @@ commentImages
 comments.csv
 *.csv
 *.txt
+newrelic.js
