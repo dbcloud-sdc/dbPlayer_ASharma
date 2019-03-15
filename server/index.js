@@ -18,7 +18,7 @@ app.use('/', express.static(path.join(__dirname, '../client/dist')));
 //  querySong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
 
 //deal with a song
-app.route('/song/:songId/api/song_id')
+app.route('/api/song/:songId/song_id')
   //get a particular song
   .get((req, res) => {
     db.readASong(req.params.songId)
@@ -76,7 +76,7 @@ app.route('/song/:songId/api/song_id')
   });
 
 //get associated comments
-app.route('/song/:songId/api/song_comment')
+app.route('/api/song/:songId/song_comments')
   //get all comments
   .get((req, res) => {
     //console.log(req.params.songId)
