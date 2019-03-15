@@ -1,3 +1,4 @@
+const jQuery = require('jquery');
 const $ = require('jquery');
 
 
@@ -25,7 +26,7 @@ jQuery.each(["put", "delete"], function (i, method) {
 
 const getAllSongs = (callback) => {
   $.get({
-    url: `${window.location.pathname}api/song_id`,
+    url: '/api/song/:songId/song_id',
     success: data => callback(null, data),
     error: err => callback(err),
   });
@@ -33,7 +34,7 @@ const getAllSongs = (callback) => {
 
 const createASong = (dataobj, callback) => {
   $.post({
-    url: `${window.location.pathname}api/song_id`,
+    url: '/api/song/:songId/song_id',
     data: dataobj,
     success: data => callback(null, data),
     error: err => callback(err),
@@ -43,7 +44,7 @@ const createASong = (dataobj, callback) => {
 const deleteASong = (callback) => {
   $.delete(
     {
-      url: `${window.location.pathname}api/song_id`,
+      url: '/api/song/:songId/song_id',
       success: data => callback(null, data),
       error: err => callback(err),
     }
@@ -52,7 +53,7 @@ const deleteASong = (callback) => {
 
 const updateASong = (dataobj, callback) => {
   $.patch({
-    url: `${window.location.pathname}api/song_id`,
+    url: '/api/song/:songId/song_id',
     data: dataobj,
     success: data => callback(null, data),
     error: err => callback(err)
@@ -64,7 +65,7 @@ const updateASong = (dataobj, callback) => {
 
 const getAllComments = (callback) => {
   $.get({
-    url: `${window.location.pathname}api/song_comments`,
+    url: '/api/song/:songId/song_id',
     success: data => callback(null, data),
     error: err => callback(err),
   });
@@ -73,7 +74,7 @@ const getAllComments = (callback) => {
 
 const createAComment = (dataobj, callback) => {
   $.post({
-    url: `${window.location.pathname}api/song_comments`,
+    url: '/api/song/:songId/song_comments',
     data: dataobj,
     success: data => callback(null, data),
     error: err => callback(err),
@@ -82,7 +83,7 @@ const createAComment = (dataobj, callback) => {
 
 const deleteAComment = (callback) => {
   $.delete({
-    url: `${window.location.pathname}api/song_comments`,
+    url: '/api/song/:songId/song_comments',
     success: data => callback(null, data),
     error: err => callback(err),
   });
@@ -90,7 +91,7 @@ const deleteAComment = (callback) => {
 
 const updateAComment = (dataobj, callback) => {
   $.patch({
-    url: `${window.location.pathname}api/song_comments`,
+    url: '/api/song/:songId/song_comments',
     data: dataobj,
     success: data => callback(null, data),
     error: err => callback(err),
@@ -108,7 +109,7 @@ module.exports = {
 //original 
 // const getAllImages = (callback) => {
 //   $.get({
-//     url: `${window.location.pathname}api/song_img`,
+//     url: '${window.location.pathname}api/song_img`,
 //     success: data => callback(null, data),
 //     error: err => callback(err),
 //   });
