@@ -3,6 +3,7 @@ require('newrelic');
 const express = require('express');
 const db = require('./db');
 var bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 // use the body parser middleware to put the application/json post bodies onto req.body
@@ -12,7 +13,7 @@ const port = 3002;
 
 //get rid of morgan  - slow
 //app.use(cors());
-//app.use('/song/:songId', express.static(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 //  querySong, updateSong, deleteSong, createSong, readComments, updateComment, deleteComment, createComment
 
