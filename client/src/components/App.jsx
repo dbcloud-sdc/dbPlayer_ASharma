@@ -28,28 +28,28 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getImage();
+    // this.getImage();
     this.getSongs();
-    this.getRandomImage();
+    // this.getRandomImage();
     this.getRandomComment();
-    this.getRandomName();
-    this.getSongUrl();
+    // this.getRandomName();
+    // this.getSongUrl();
   }
 
-  getImage() {
-    ajax.getAllImages((err, data) => {
-      if (err) {
-        console.log('getImage failed', err);
-      } else {
-        console.log('getIMAGE data');
-        console.log(data);
-        console.log(data[0]);
-        this.setState({
-          image: data[0],
-        });
-      }
-    });
-  }
+  // getImage() {
+  //   ajax.getAllImages((err, data) => {
+  //     if (err) {
+  //       console.log('getImage failed', err);
+  //     } else {
+  //       console.log('getIMAGE data');
+  //       console.log(data);
+  //       console.log(data[0]);
+  //       this.setState({
+  //         image: data[0],
+  //       });
+  //     }
+  //   });
+  // }
 
   getSongs() {
     ajax.getAllSongs((err, data) => {
@@ -61,45 +61,46 @@ class App extends React.Component {
         console.log(data);
         this.setState({
           songs: data[0],
+
         });
       }
     });
   }
 
-  getSongUrl() {
-    ajax.getAllSongsUrl((err, data) => {
-      if (err) {
-        console.log('getSongs Failed', err);
-      } else {
-        console.log('get songs url');
+  // getSongUrl() {
+  //   ajax.getAllSongsUrl((err, data) => {
+  //     if (err) {
+  //       console.log('getSongs Failed', err);
+  //     } else {
+  //       console.log('get songs url');
 
-        console.log(data);
-        this.setState({
-          songsUrl: data[0],
-        });
-      }
-    });
-  }
+  //       console.log(data);
+  //       this.setState({
+  //         songsUrl: data[0],
+  //       });
+  //     }
+  //   });
+  // }
 
-  getRandomImage() {
-    ajax.getAllCommentImages((err, data) => {
-      if (err) {
-        console.log('getRandomImage failed', err);
-      } else {
-        console.log('get random image');
+  // getRandomImage() {
+  //   ajax.getAllCommentImages((err, data) => {
+  //     if (err) {
+  //       console.log('getRandomImage failed', err);
+  //     } else {
+  //       console.log('get random image');
 
-        console.log(data);
-        const img = [];
-        for (let i = 0; i < 80; i += 1) {
-          const randomIndex = Math.floor(Math.random() * 100);
-          img.push(data[randomIndex].commentimage);
-        }
-        this.setState({
-          randomImage: img,
-        });
-      }
-    });
-  }
+  //       console.log(data);
+  //       const img = [];
+  //       for (let i = 0; i < 80; i += 1) {
+  //         const randomIndex = Math.floor(Math.random() * 100);
+  //         img.push(data[randomIndex].commentimage);
+  //       }
+  //       this.setState({
+  //         randomImage: img,
+  //       });
+  //     }
+  //   });
+  // }
 
   getRandomComment() {
     ajax.getAllComments((err, data) => {
@@ -121,25 +122,25 @@ class App extends React.Component {
     });
   }
 
-  getRandomName() {
-    ajax.getAllComments((err, data) => {
-      if (err) {
-        console.log('getRandomSongs Failed', err);
-      } else {
-        console.log('get random name');
+  // getRandomName() {
+  //   ajax.getAllComments((err, data) => {
+  //     if (err) {
+  //       console.log('getRandomSongs Failed', err);
+  //     } else {
+  //       console.log('get random name');
 
-        console.log(data);
-        const name = [];
-        for (let i = 0; i < 80; i += 1) {
-          const randomIndex = Math.floor(Math.random() * 100);
-          name.push(data[randomIndex].username);
-        }
-        this.setState({
-          randomName: name,
-        });
-      }
-    });
-  }
+  //       console.log(data);
+  //       const name = [];
+  //       for (let i = 0; i < 80; i += 1) {
+  //         const randomIndex = Math.floor(Math.random() * 100);
+  //         name.push(data[randomIndex].username);
+  //       }
+  //       this.setState({
+  //         randomName: name,
+  //       });
+  //     }
+  //   });
+  // }
 
   handlePlayButton() {
     this.setState({
